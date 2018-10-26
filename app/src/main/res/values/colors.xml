@@ -7,6 +7,6 @@
     <color name="yellow">#EEF669</color>
     <color name="blue">#0CCBD0</color>
     <color name="white">#FFFFFF</color>
-    <color name="transpartent">#AARRGGBB</color>
+    <color name="transpartent">#FFFFFF</color>
     <color name="gray">#9A9595</color>
 </resources>
