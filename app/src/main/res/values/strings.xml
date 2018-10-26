@@ -12,4 +12,10 @@
     <string name="ask_end">Party End Time?</string>
     <string name="ask_date">Party Date?</string>
     <string name="back">Back</string>
+    <string name="enter_name">Enter Party Name</string>
+    <string name="enter_num_guests">Enter Number of Guests</string>
+    <string name="enter_date">Enter Party Date</string>
+    <string name="enter_location">Enter Party Location</string>
+    <string name="enter_start">Enter Party Start Time</string>
+    <string name="enter_end">Enter Party End Time</string>
 </resources>
