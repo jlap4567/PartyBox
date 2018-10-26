@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">PartyBox</string>
+    <string name="new_party">New Party</string>
+    <string name="made_party">Made Party</string>
+    <string name="next">Next</string>
+    <string name="ask_name">Party Name?</string>
+    <string name="ask_location">Party Location?</string>
+    <string name="ask_time">Party Time?</string>
+    <string name="ask_num_guest">Number of Guests?</string>
+    <string name="enter_info">Enter Party Information</string>
+    <string name="ask_start">Party Start Time?</string>
+    <string name="ask_end">Party End Time?</string>
+    <string name="ask_date">Party Date?</string>
+    <string name="back">Back</string>
 </resources>
