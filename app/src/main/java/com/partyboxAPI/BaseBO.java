@@ -1,5 +1,9 @@
 package com.partyboxAPI;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
 import java.util.List;
 
 abstract class BaseBO {
@@ -23,7 +27,7 @@ abstract class BaseBO {
      * @param objects
      * @return
      */
-    protected int hashObjects(List<?> objects) {
+    protected static  int hashObjects(List<?> objects) {
         int hash = BASE_PRIME;
         for (Object obj: objects) {
             hash =  OBJECT_PRIME * hash + obj.hashCode();
