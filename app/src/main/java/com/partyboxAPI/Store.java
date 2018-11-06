@@ -28,13 +28,14 @@ public abstract class Store extends BaseBO {
 
     /**
      * Initialize party supply store
-     * @param storeData
+     * @param address
+     * @param port
      */
-    public static void init(String storeData) throws PartyBoxException {
+    public static void init(String address, Integer port) throws PartyBoxException {
         itemMasterSet = Sets.newHashSet();
         typeTable = Maps.newHashMap();
         tagTable = Maps.newHashMap();
-        String itemSetJSON = null;
+        String storeData = sync(address, port);
 
         try {
             populateItemSets(storeData);
@@ -83,6 +84,27 @@ public abstract class Store extends BaseBO {
         }
 
         return filteredItems;
+    }
+
+    /**
+     * Since the store maintains an open connection to the remote server, orders shall be placed via the store
+     * @param cart
+     * @throws PartyBoxException
+     */
+    public static void placeOrder(ShoppingCart cart) throws PartyBoxException {
+        // TODO: Implement
+    }
+
+    /**
+     * Retrieves products available for sale from remote server
+     * @param address
+     * @param port
+     * @return
+     */
+    @VisibleForTesting
+    public static String sync(String address, Integer port) {
+        // TODO: Implement
+        return "";
     }
 
     private static void populateItemSets(String itemSetJSON) throws PartyBoxException,JSONException {
