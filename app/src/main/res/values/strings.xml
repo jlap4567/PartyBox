@@ -18,4 +18,7 @@
     <string name="enter_location">Enter Party Location</string>
     <string name="enter_start">Enter Party Start Time</string>
     <string name="enter_end">Enter Party End Time</string>
+    <string name="item">Item</string>
+    <string name="price">$Price$</string>
+    <string name="quantity">Quantity</string>
 </resources>
