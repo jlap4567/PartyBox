@@ -1,6 +1,6 @@
 package com.partybox.exceptions;
 
-import com.partyboxAPI.PartyBoxException;
+import com.partyboxAPI.exceptions.PartyBoxException;
 
 /**
  * Throw this on invalid user input

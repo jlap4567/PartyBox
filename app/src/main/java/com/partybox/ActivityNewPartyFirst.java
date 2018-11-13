@@ -1,8 +1,6 @@
 package com.partybox;
 
-import com.partyboxAPI.JSONObjectWrapper;
 import com.partyboxAPI.Party;
-import com.partyboxAPI.PartyBoxException;
 import com.partyboxAPI.PartyFactory;
 import com.partybox.exceptions.InvalidUserInputException;
 

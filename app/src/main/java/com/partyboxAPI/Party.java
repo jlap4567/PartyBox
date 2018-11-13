@@ -3,6 +3,8 @@ package com.partyboxAPI;
 import android.util.Log;
 
 import com.google.common.collect.ImmutableList;
+import com.partyboxAPI.exceptions.PartyBoxException;
+import com.partyboxAPI.exceptions.SerializationException;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,6 +31,14 @@ public class Party extends BaseBO {
 
     Party() {
         // protected constructor for PartyFactory
+    }
+
+    /**
+     * The summary is the date:name of a party, this shall be the file name of each saved party + .party
+     * @return
+     */
+    public String getSummary() {
+        return date + ":" + name;
     }
 
     @Override

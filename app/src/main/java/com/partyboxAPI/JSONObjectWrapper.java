@@ -1,5 +1,8 @@
 package com.partyboxAPI;
 
+import com.partyboxAPI.exceptions.PartyBoxException;
+import com.partyboxAPI.exceptions.SerializationException;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

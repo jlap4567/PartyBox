@@ -1,5 +1,7 @@
 package com.partyboxAPI;
 
+import com.partyboxAPI.exceptions.PartyBoxException;
+
 import java.util.Set;
 /**
  * Package private factory for instantiating items, used internally by API when the Store is initialized

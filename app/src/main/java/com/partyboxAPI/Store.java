@@ -5,6 +5,8 @@ import android.util.Log;
 
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
+import com.partyboxAPI.exceptions.PartyBoxException;
+import com.partyboxAPI.exceptions.SerializationException;
 
 import org.json.JSONArray;
 import org.json.JSONException;
