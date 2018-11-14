@@ -40,4 +40,9 @@ public class PartySummary {
     public String getName() {
         return name;
     }
+    
+    @Override
+    public String toString() {
+        return date.toString() + ":" + name;
+    }
 }

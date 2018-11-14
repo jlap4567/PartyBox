@@ -1,6 +1,7 @@
 package com.partybox;
 
 import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Environment;
@@ -23,7 +24,7 @@ public abstract class BaseActivity extends Activity {
      * @param v
      * @param activity
      */
-    protected void switchToActivity(View v, Class<? extends BaseActivity> activity) {
+    protected void switchToActivity(View v, Class<? extends Activity> activity) {
         Intent intent = new Intent(this, activity);
         startActivity(intent);
     }
@@ -32,7 +33,7 @@ public abstract class BaseActivity extends Activity {
      * Get the path to the local files dir, create if doesn't exist
      * @return
      */
-    protected String getOrCreatePartiesDirectory() {
+    protected static String getOrCreatePartiesDirectory() {
         File localFilesDir = Environment.getExternalStorageDirectory();
         File partiesDir = new File(localFilesDir, PARTIES_DIRECTORY);
         if (!partiesDir.exists()) {
@@ -49,7 +50,7 @@ public abstract class BaseActivity extends Activity {
      * @param localFilesDir
      * @return
      */
-    private String savedPartiesDirExists(File localFilesDir) {
+    private static String savedPartiesDirExists(File localFilesDir) {
         FileFilter filter = new FileFilter() {
             @Override
             public boolean accept(File pathname) {

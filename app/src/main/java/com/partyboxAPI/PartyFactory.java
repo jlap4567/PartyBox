@@ -66,6 +66,7 @@ public abstract class PartyFactory {
 
         File[] filesInPartyDir = partiesDirectory.listFiles();
         for (File file: filesInPartyDir) {
+            Log.d("xxxxxxxx" , "File name: " + file.getName());
             partySummaries.add(getPartySummaryFromFilename(file.getName()));
             /*if (verifyPartyFile(file)) {
                 try {
@@ -88,13 +89,11 @@ public abstract class PartyFactory {
     }
 
     private static PartySummary getPartySummaryFromFilename(String fileName) throws PartyBoxException {
-        String partyCode = fileName.substring(fileName.indexOf(PARTY_FILE_PREFIX));
+        String partyCode = fileName; //.substring(0, fileName.indexOf(PARTY_FILE_PREFIX));
         int seperationIndex = partyCode.indexOf(":");
-        String[] partyCodeSplit = partyCode.split(":");
-        // partyCodeSplit is guarentied to have length at least 2 since we chacked the party file name previously
-        String partyDate = partyCodeSplit[0];
-        partyCodeSplit[0] = "";
-        String partyName = Arrays.toString(partyCodeSplit);
+        String partyDate = partyCode.substring(0, seperationIndex);
+        String partyName = partyCode.substring(seperationIndex, partyCode.indexOf(".party"));
+        Log.d("xxxxxxxxx", "Date: " + partyDate + "\tName: " + partyName);
         try {
             return new PartySummary(partyDate, partyName);
         } catch (PartyBoxException e) {

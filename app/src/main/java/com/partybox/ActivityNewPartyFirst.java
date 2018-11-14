@@ -58,7 +58,7 @@ public class ActivityNewPartyFirst extends BaseActivity {
                     // tell user something
                 }
                 //switchToActivity(v, BrowseStoreActivity.class); TODO: Implement
-                // Right now just print party contents to log
+                // Right now just print party contents to log and write to file
                 Log.i("Info", "Party:\n" + PartyFactory.getNewOrCurrentParty().toString());
                 writePartyToFile();
             }
