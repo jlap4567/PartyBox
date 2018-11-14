@@ -21,4 +21,5 @@
     <string name="item">Item</string>
     <string name="price">$Price$</string>
     <string name="quantity">Quantity</string>
+    <string name="check_out">Checkout</string>
 </resources>
