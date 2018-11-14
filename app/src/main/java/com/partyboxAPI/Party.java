@@ -88,7 +88,7 @@ public class Party extends BaseBO {
                 "\nDate: " + date.toString() +
                 "\nStart Time: " + startTime.toString() +
                 "\nEnd Time: " + endTime.toString() +
-                "\nLocation: " + location.toString() +
+                "\nLocation: " + location +
                 "\nGuests: " + guestCount.toString();
     }
 

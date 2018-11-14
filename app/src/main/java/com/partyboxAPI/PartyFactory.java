@@ -66,7 +66,8 @@ public abstract class PartyFactory {
 
         File[] filesInPartyDir = partiesDirectory.listFiles();
         for (File file: filesInPartyDir) {
-            if (verifyPartyFile(file)) {
+            partySummaries.add(getPartySummaryFromFilename(file.getName()));
+            /*if (verifyPartyFile(file)) {
                 try {
                     partySummaries.add(getPartySummaryFromFilename(file.getName()));
                 } catch (PartyBoxException e) {
@@ -76,7 +77,7 @@ public abstract class PartyFactory {
             } else {
                 Log.d("Misc", "Removing garbage in parties directory: " + file.getName());
                 file.delete();
-            }
+            }*/
         }
 
         return partySummaries;

@@ -1,5 +1,6 @@
 package com.partybox;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +17,14 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 switchToActivity(v, ActivityNewPartyFirst.class);
+            }
+        });
+
+        final Button existingPartyButton = findViewById(R.id.made_party);
+        existingPartyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switchToActivity(v, MadePartyListActivity.class);
             }
         });
     }

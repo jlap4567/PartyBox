@@ -3,12 +3,22 @@ package com.partybox;
 import com.partyboxAPI.Party;
 import com.partyboxAPI.PartyFactory;
 import com.partybox.exceptions.InvalidUserInputException;
+import com.partyboxAPI.exceptions.PartyBoxException;
+import com.partyboxAPI.exceptions.SerializationException;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
 
 public class ActivityNewPartyFirst extends BaseActivity {
     EditText nameField;
@@ -50,6 +60,7 @@ public class ActivityNewPartyFirst extends BaseActivity {
                 //switchToActivity(v, BrowseStoreActivity.class); TODO: Implement
                 // Right now just print party contents to log
                 Log.i("Info", "Party:\n" + PartyFactory.getNewOrCurrentParty().toString());
+                writePartyToFile();
             }
         });
 
@@ -80,5 +91,26 @@ public class ActivityNewPartyFirst extends BaseActivity {
         party.setGuestCount(guestCount);
 
         party.setLocation(locationField.getText().toString());
+    }
+
+    private void writePartyToFile() {
+        String fileName = null;
+        try {
+            String partiesDir = getOrCreatePartiesDirectory();
+            Party party = PartyFactory.getNewOrCurrentParty();
+            String json = party.toJSON().toString();
+            fileName = partiesDir + File.separator + String.format("%s:%s.party", party.getDate().toString(), party.getName());
+            PrintWriter writer = new PrintWriter(fileName, "UTF-8");
+            writer.printf(json);
+            writer.close();
+
+            File partyDir = new File(partiesDir);
+        } catch (PartyBoxException e) {
+            throw new java.lang.RuntimeException(e.getMessage() + "\nPath: " + fileName);
+        } catch (FileNotFoundException e) {
+            throw new java.lang.RuntimeException(e.getMessage() + "\nPath: " + fileName);
+        } catch (UnsupportedEncodingException e) {
+            throw new java.lang.RuntimeException(e.getMessage());
+        }
     }
 }

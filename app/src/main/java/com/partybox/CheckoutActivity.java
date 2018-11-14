@@ -1,4 +1,4 @@
-package com.partybox.exceptions;
+package com.partybox;
 
 import android.os.Bundle;
 
