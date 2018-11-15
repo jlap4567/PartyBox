@@ -25,6 +25,7 @@ public class Item extends BaseBO implements Comparable<Item> {
     private static final String JSON_PRICE = "price";
     private static final String JSON_PRICE_UNIT = "priceUnit";
     private static final String JSON_TAGS = "tags";
+    private static final String JSON_IMG_NAME = "img";
 
     private String title;
     private String description;
@@ -33,6 +34,8 @@ public class Item extends BaseBO implements Comparable<Item> {
     private PriceUnit priceUnit;
     /* tags may be some subtype of item, such as 'finger food' or 'beverage' or 'green' */
     private Set<String> tags;
+    /* Is file name of image associated with product */
+    private String image;
 
     public static enum Type {
         FOOD,
@@ -69,6 +72,7 @@ public class Item extends BaseBO implements Comparable<Item> {
             itemJSONObject.put(JSON_PRICE, price);
             itemJSONObject.put(JSON_PRICE_UNIT, priceUnit.name());
             itemJSONObject.put(JSON_TYPE, type.name());
+            itemJSONObject.put(JSON_IMG_NAME, image);
 
             JSONArray tagSet = new JSONArray();
             for (String tag: tags) {
@@ -96,6 +100,7 @@ public class Item extends BaseBO implements Comparable<Item> {
             price = jsonObject.getDouble(JSON_PRICE);
             priceUnit = PriceUnit.valueOf(jsonObject.getString(JSON_PRICE_UNIT));
             type = Type.valueOf(jsonObject.getString(JSON_TYPE));
+            image = jsonObject.getString(JSON_IMG_NAME);
             tags = Sets.newHashSet();
 
             JSONArray tagArray = jsonObject.getJSONArray(JSON_TAGS);
@@ -135,5 +140,9 @@ public class Item extends BaseBO implements Comparable<Item> {
 
     public Set<String> getTags() {
         return tags;
+    }
+
+    public String getImage() {
+        return image;
     }
 }

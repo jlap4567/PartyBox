@@ -14,6 +14,9 @@ import com.partybox.R;
 import java.util.ArrayList;
 import java.util.Set;
 
+/**
+ * Adapter for desplaying summaries of parties in a list
+ */
 public class PartySummaryAdapter extends ArrayAdapter<PartySummary> {
     public PartySummaryAdapter(Context context, ArrayList<PartySummary> summaries) {
         super(context, 0, summaries);

@@ -7,6 +7,7 @@
     android:paddingRight="8dp"
     android:id="@+id/party_list">
 
+    <!-- Entries in the list display background_blue, bcakround of list displays yellow -->
     <ListView android:id="@android:id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
