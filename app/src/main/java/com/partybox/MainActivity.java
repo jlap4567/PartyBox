@@ -16,7 +16,7 @@ public class MainActivity extends BaseActivity {
         newPartyButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                switchToActivity(v, ActivityNewPartyFirst.class);
+                switchToActivity(v, ActivityNewPartyFirst.class, Direction.LEFT);
             }
         });
 
@@ -24,7 +24,7 @@ public class MainActivity extends BaseActivity {
         existingPartyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switchToActivity(v, MadePartyListActivity.class);
+                switchToActivity(v, MadePartyListActivity.class, Direction.LEFT);
             }
         });
     }

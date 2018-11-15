@@ -43,7 +43,7 @@ public class ActivityNewPartyFirst extends BaseActivity {
                     Log.i("UserInputError", e.getMessage());
                     // tell user something
                 }
-                switchToActivity(v, MainActivity.class);
+                switchToActivity(v, MainActivity.class, Direction.LEFT);
             }
         });
 

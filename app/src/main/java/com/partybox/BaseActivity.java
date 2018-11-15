@@ -18,15 +18,24 @@ import java.util.Collections;
  * Put stuff here that every activity needs to use
  */
 public abstract class BaseActivity extends Activity {
+    public enum Direction {LEFT, RIGHT}
     protected static final String PARTIES_DIRECTORY = "savedParties";
     /**
      * Switch from current activity to another
      * @param v
      * @param activity
      */
-    protected void switchToActivity(View v, Class<? extends Activity> activity) {
+
+    protected void switchToActivity(View v, Class<? extends Activity> activity, Direction dir) {
         Intent intent = new Intent(this, activity);
         startActivity(intent);
+        switch (dir){
+            case LEFT: overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+            case RIGHT: overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+            default: overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+
+        }
+
     }
 
     /**
