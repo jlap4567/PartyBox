@@ -3,15 +3,16 @@
     <string name="new_party">New Party</string>
     <string name="made_party">Made Party</string>
     <string name="next">Next</string>
-    <string name="ask_name">Party Name?</string>
-    <string name="ask_location">Party Location?</string>
-    <string name="ask_time">Party Time?</string>
-    <string name="ask_num_guest">Number of Guests?</string>
+    <string name="ask_name">Party Name</string>
+    <string name="ask_location">Party Location</string>
+    <string name="ask_time">Party Time</string>
+    <string name="ask_num_guest">Number of Guests</string>
     <string name="enter_info">Enter Party Information</string>
-    <string name="ask_start">Party Start Time?</string>
-    <string name="ask_end">Party End Time?</string>
-    <string name="ask_date">Party Date?</string>
+    <string name="ask_start">Party Start Time</string>
+    <string name="ask_end">Party End Time</string>
+    <string name="ask_date">Party Date</string>
     <string name="back">Back</string>
+    <string name="delete">Delete</string>
     <string name="enter_name">Enter Party Name</string>
     <string name="enter_num_guests">Enter Number of Guests</string>
     <string name="enter_date">Enter Party Date</string>
@@ -22,4 +23,6 @@
     <string name="price">$Price$</string>
     <string name="quantity">Quantity</string>
     <string name="check_out">Checkout</string>
+    <string name="save">save</string>
+    <string name="made_party_header">View/Edit Party</string>
 </resources>

@@ -7,11 +7,37 @@
     android:paddingRight="8dp"
     android:id="@+id/party_list">
 
-    <!-- Entries in the list display background_blue, bcakround of list displays yellow -->
+    <!-- Entries in the list display background_blue, bcakround of list displays white -->
     <ListView android:id="@android:id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:drawSelectorOnTop="false"
-        android:background="@color/yellow"/>
+        android:background="@color/white"/>
+
+    <!-- Linear Layout for buttons-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="81dp"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:background="@color/background_blue">
+
+
+        <!-- Back button-->
+        <Button
+            android:id="@+id/back"
+            android:layout_width="71dp"
+            android:layout_height="56dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/roundedbutton"
+            android:backgroundTint="@color/red"
+            android:text="@string/back"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+    </LinearLayout>
+
 </LinearLayout>

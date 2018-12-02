@@ -74,7 +74,9 @@ public class ActivityNewPartyFirst extends BaseActivity {
 
     private void readFieldsAndPopulateParty(Party party) throws InvalidUserInputException {
         party.setName(nameField.getText().toString());
-        party.setDate(dateField.getText().toString());
+        String partyDate = dateField.getText().toString();
+        partyDate = partyDate.replace('/', '-');
+        party.setDate(partyDate);
         party.setStartTime(startTimeField.getText().toString());
         party.setEndTime(endTimeField.getText().toString());
 

@@ -50,6 +50,7 @@ public class Party extends BaseBO {
             jsonObject.put(JSON_START_TIME, startTime);
             jsonObject.put(JSON_END_TIME, endTime);
             jsonObject.put(JSON_LOCATION, location);
+            jsonObject.put(JSON_GUESTS, guestCount);
             return new JSONObjectWrapper(jsonObject);
         } catch (JSONException e) {
             Log.e("JSON", e.getMessage());
@@ -74,11 +75,9 @@ public class Party extends BaseBO {
             location = jsonObject.getString(JSON_LOCATION);
             guestCount = jsonObject.getInt(JSON_GUESTS);
 
-            System.out.println("xxxxxxxxxxxxxxxxxxxxx " + jsonObject.toString());
-
         } catch (JSONException e) {
             Log.e("JSON", e.getMessage());
-            throw new SerializationException(getClass().getName(), e.getMessage());
+            //throw new SerializationException(getClass().getName(), e.getMessage());
         }
     }
 

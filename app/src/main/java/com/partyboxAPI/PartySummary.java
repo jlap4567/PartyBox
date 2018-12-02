@@ -22,8 +22,10 @@ public class PartySummary {
     private Date date;
     private String name;
 
-    PartySummary(String date, String name) throws PartyBoxException {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
+    private String filePath;
+
+    PartySummary(String filePath, String date, String name) throws PartyBoxException {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
             this.date = dateFormat.parse(date);
         } catch (ParseException e) {
@@ -31,6 +33,7 @@ public class PartySummary {
             throw new CorruptPartyFileException(name, e.getMessage());
         }
         this.name = name;
+        this.filePath = filePath;
     }
 
     public Date getDate() {
@@ -39,6 +42,10 @@ public class PartySummary {
 
     public String getName() {
         return name;
+    }
+
+    public String getFilePath() {
+        return filePath;
     }
     
     @Override

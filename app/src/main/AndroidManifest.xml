@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".ActivityNewPartyFirst"></activity>
         <activity android:name=".MadePartyListActivity"></activity>
+        <activity android:name=".ViewEditPartyActivity"></activity>
 
 
     </application>

@@ -67,7 +67,7 @@ public abstract class PartyFactory {
         File[] filesInPartyDir = partiesDirectory.listFiles();
         for (File file: filesInPartyDir) {
             Log.d("xxxxxxxx" , "File name: " + file.getName());
-            partySummaries.add(getPartySummaryFromFilename(file.getName()));
+            partySummaries.add(getPartySummaryFromFilename(file));
             /*if (verifyPartyFile(file)) {
                 try {
                     partySummaries.add(getPartySummaryFromFilename(file.getName()));
@@ -88,14 +88,15 @@ public abstract class PartyFactory {
         return file.exists() && file.isFile() && file.getName().matches(PARTY_FILENAME_REGEX) && file.getName().endsWith(PARTY_FILE_PREFIX);
     }
 
-    private static PartySummary getPartySummaryFromFilename(String fileName) throws PartyBoxException {
+    private static PartySummary getPartySummaryFromFilename(File file) throws PartyBoxException {
+        String fileName = file.getName();
         String partyCode = fileName; //.substring(0, fileName.indexOf(PARTY_FILE_PREFIX));
         int seperationIndex = partyCode.indexOf(":");
         String partyDate = partyCode.substring(0, seperationIndex);
-        String partyName = partyCode.substring(seperationIndex, partyCode.indexOf(".party"));
+        String partyName = partyCode.substring(seperationIndex+1, partyCode.indexOf(".party"));
         Log.d("xxxxxxxxx", "Date: " + partyDate + "\tName: " + partyName);
         try {
-            return new PartySummary(partyDate, partyName);
+            return new PartySummary(file.getPath(), partyDate, partyName);
         } catch (PartyBoxException e) {
             Log.e("Parse", e.getMessage());
             throw e;

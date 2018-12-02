@@ -20,6 +20,9 @@ import java.util.Collections;
 public abstract class BaseActivity extends Activity {
     public enum Direction {LEFT, RIGHT}
     protected static final String PARTIES_DIRECTORY = "savedParties";
+    /* Hacky method for keeping track of open party file */
+    protected static String currentPartyPath = null;
+
     /**
      * Switch from current activity to another
      * @param v
