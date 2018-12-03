@@ -17,6 +17,24 @@ import java.util.Set;
  * Represents physical item available for purchase.
  * Is immutable. A collection of these can be sorted by title.
  * Is initialized by ItemFactory when the Store is initialized.
+ *
+ * JSON Description:
+ * <code>
+ *     {
+ *         "title": "Lays Salt and Vinegar Potato Chips",
+ *         "description": "Very good, very very good",
+ *         "type": "FOOD",
+ *         "price": 1.50,
+ *         "priceUnit": "USDperItem",
+ *         "tags":
+ *         [
+ *              "chips",
+ *              "fingerfood",
+ *              "yum"
+ *         ],
+ *         "img": "thumbs.png"
+ *     }
+ * </code>
  */
 public class Item extends BaseBO implements Comparable<Item> {
     private static final String JSON_TITLE = "title";

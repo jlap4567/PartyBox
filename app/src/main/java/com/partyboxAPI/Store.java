@@ -152,4 +152,7 @@ public abstract class Store extends BaseBO {
         return contents;
     }
 
+    protected static Set<Item> getMasterItemSet() {
+        return itemMasterSet;
+    }
 }
