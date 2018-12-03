@@ -1,7 +1,9 @@
 package com.partybox;
 
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -80,10 +82,42 @@ public class ViewEditPartyActivity extends BaseActivity {
 
     private void setFieldsFromParty() {
         Party party = PartyFactory.getNewOrCurrentParty();
+
         nameField = (EditText) findViewById(R.id.p_name);
         dateField = (EditText) findViewById(R.id.p_date);
         startTimeField  = (EditText) findViewById(R.id.p_start_t);
+        startTimeField.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        int inputType = startTimeField.getInputType();
+                        startTimeField.setInputType(InputType.TYPE_NULL);
+                        PartyFactory.getNewOrCurrentParty().setStartTime(null);
+                        showTimePicker(v);
+                        startTimeField.setInputType(inputType);
+                        break;
+                }
+                return true;
+            }
+        });
+
         endTimeField = (EditText) findViewById(R.id.p_end_t);
+        endTimeField.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        int inputType = startTimeField.getInputType();
+                        startTimeField.setInputType(InputType.TYPE_NULL);
+                        PartyFactory.getNewOrCurrentParty().setEndTime(null);
+                        showTimePicker(v);
+                        startTimeField.setInputType(inputType);
+                        break;
+                }
+                return true;
+            }
+        });
         guestCountField = (EditText) findViewById(R.id.p_guests);
         locationField = (EditText) findViewById(R.id.p_location);
 

@@ -5,9 +5,13 @@ import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Environment;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+
+import com.partybox.dialogs.TimePickerFragment;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -17,7 +21,7 @@ import java.util.Collections;
 /**
  * Put stuff here that every activity needs to use
  */
-public abstract class BaseActivity extends Activity {
+public abstract class BaseActivity extends FragmentActivity {
     public enum Direction {LEFT, RIGHT}
     protected static final String PARTIES_DIRECTORY = "savedParties";
     /* Hacky method for keeping track of open party file */
@@ -76,5 +80,27 @@ public abstract class BaseActivity extends Activity {
         }
 
         return partiesDir[0].getName();
+    }
+
+    /**
+     * Show the time picker dialog fragment
+     * @param v
+     */
+    protected void showTimePicker(View v) {
+        DialogFragment newFragment = new TimePickerFragment();
+        newFragment.show(getSupportFragmentManager(), "timePicker");
+    }
+
+    /**
+     * Override this to change object state on dialog change. Since baseActivity shows dialog fragments.
+     * In fragment on close:
+     * <code>
+     *     BaseActivity activity = (BaseActivity) getActivity();
+     *     // check if null
+     *     activity.updateDialogOnClose(DerivedActivity.DATA_TYPE, data)
+     * </code>
+     */
+    public void updateOnDialogClose(int mode, String data) {
+
     }
 }

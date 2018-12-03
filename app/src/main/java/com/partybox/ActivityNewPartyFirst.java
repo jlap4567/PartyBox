@@ -8,7 +8,9 @@ import com.partyboxAPI.exceptions.SerializationException;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +23,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 
 public class ActivityNewPartyFirst extends BaseActivity {
+    public static final int DIALOG_END_TIME = 0;
+    public static final int DIALOG_START_TIME = 1;
     EditText nameField;
     EditText dateField;
     EditText startTimeField;
@@ -67,9 +71,52 @@ public class ActivityNewPartyFirst extends BaseActivity {
         nameField = (EditText) findViewById(R.id.p_name);
         dateField = (EditText) findViewById(R.id.p_date);
         startTimeField  = (EditText) findViewById(R.id.p_start_t);
+        startTimeField.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        int inputType = startTimeField.getInputType();
+                        startTimeField.setInputType(InputType.TYPE_NULL);
+                        PartyFactory.getNewOrCurrentParty().setStartTime(null);
+                        showTimePicker(v);
+                        startTimeField.setInputType(inputType);
+                        break;
+                }
+                return true;
+            }
+        });
+
         endTimeField = (EditText) findViewById(R.id.p_end_t);
+        endTimeField.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        int inputType = startTimeField.getInputType();
+                        startTimeField.setInputType(InputType.TYPE_NULL);
+                        PartyFactory.getNewOrCurrentParty().setEndTime(null);
+                        showTimePicker(v);
+                        startTimeField.setInputType(inputType);
+                        break;
+                }
+                return true;
+            }
+        });
         guestCountField = (EditText) findViewById(R.id.p_guests);
         locationField = (EditText) findViewById(R.id.p_location);
+    }
+
+    @Override
+    public void updateOnDialogClose(int mode, String data) {
+        switch (mode) {
+            case DIALOG_START_TIME:
+                startTimeField.setText(data);
+                break;
+            case DIALOG_END_TIME:
+                endTimeField.setText(data);
+                break;
+        }
     }
 
     private void readFieldsAndPopulateParty(Party party) throws InvalidUserInputException {
@@ -77,8 +124,8 @@ public class ActivityNewPartyFirst extends BaseActivity {
         String partyDate = dateField.getText().toString();
         partyDate = partyDate.replace('/', '-');
         party.setDate(partyDate);
-        party.setStartTime(startTimeField.getText().toString());
-        party.setEndTime(endTimeField.getText().toString());
+//        party.setStartTime(startTimeField.getText().toString());
+//        party.setEndTime(endTimeField.getText().toString());
 
         int guestCount;
         try {
