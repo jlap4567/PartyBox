@@ -23,8 +23,6 @@ import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 
 public class ActivityNewPartyFirst extends BaseActivity {
-    public static final int DIALOG_END_TIME = 0;
-    public static final int DIALOG_START_TIME = 1;
     EditText nameField;
     EditText dateField;
     EditText startTimeField;
@@ -70,6 +68,22 @@ public class ActivityNewPartyFirst extends BaseActivity {
 
         nameField = (EditText) findViewById(R.id.p_name);
         dateField = (EditText) findViewById(R.id.p_date);
+        dateField.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        int inputType = dateField.getInputType();
+                        dateField.setInputType(InputType.TYPE_NULL);
+                        PartyFactory.getNewOrCurrentParty().setStartTime(null);
+                        showDatePicker(v);
+                        dateField.setInputType(inputType);
+                        break;
+                }
+                return true;
+            }
+        });
+
         startTimeField  = (EditText) findViewById(R.id.p_start_t);
         startTimeField.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -93,11 +107,11 @@ public class ActivityNewPartyFirst extends BaseActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        int inputType = startTimeField.getInputType();
-                        startTimeField.setInputType(InputType.TYPE_NULL);
+                        int inputType = endTimeField.getInputType();
+                        endTimeField.setInputType(InputType.TYPE_NULL);
                         PartyFactory.getNewOrCurrentParty().setEndTime(null);
                         showTimePicker(v);
-                        startTimeField.setInputType(inputType);
+                        endTimeField.setInputType(inputType);
                         break;
                 }
                 return true;
@@ -116,6 +130,8 @@ public class ActivityNewPartyFirst extends BaseActivity {
             case DIALOG_END_TIME:
                 endTimeField.setText(data);
                 break;
+            case DIALOG_DATE:
+                dateField.setText(data);
         }
     }
 

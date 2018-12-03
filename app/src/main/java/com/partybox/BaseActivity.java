@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
+import com.partybox.dialogs.DatePickerfragment;
 import com.partybox.dialogs.TimePickerFragment;
 
 import java.io.File;
@@ -22,6 +23,10 @@ import java.util.Collections;
  * Put stuff here that every activity needs to use
  */
 public abstract class BaseActivity extends FragmentActivity {
+    public static final int DIALOG_END_TIME = 0;
+    public static final int DIALOG_START_TIME = 1;
+    public static final int DIALOG_DATE = 2;
+
     public enum Direction {LEFT, RIGHT}
     protected static final String PARTIES_DIRECTORY = "savedParties";
     /* Hacky method for keeping track of open party file */
@@ -89,6 +94,15 @@ public abstract class BaseActivity extends FragmentActivity {
     protected void showTimePicker(View v) {
         DialogFragment newFragment = new TimePickerFragment();
         newFragment.show(getSupportFragmentManager(), "timePicker");
+    }
+
+    /**
+     * Show the date picker dialog
+     * @param v
+     */
+    protected void showDatePicker(View v) {
+        DialogFragment newFragment = new DatePickerfragment();
+        newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
     /**

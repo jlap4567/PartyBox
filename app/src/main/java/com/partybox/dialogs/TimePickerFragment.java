@@ -34,10 +34,10 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
         }
 
         if (currentParty.getStartTime() == null) {
-            activity.updateOnDialogClose(ActivityNewPartyFirst.DIALOG_START_TIME, timeString);
+            activity.updateOnDialogClose(BaseActivity.DIALOG_START_TIME, timeString);
             currentParty.setStartTime(timeString);
         } else {
-            activity.updateOnDialogClose(ActivityNewPartyFirst.DIALOG_END_TIME, timeString);
+            activity.updateOnDialogClose(BaseActivity.DIALOG_END_TIME, timeString);
             currentParty.setEndTime(timeString);
         }
 

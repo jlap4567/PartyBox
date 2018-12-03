@@ -85,6 +85,22 @@ public class ViewEditPartyActivity extends BaseActivity {
 
         nameField = (EditText) findViewById(R.id.p_name);
         dateField = (EditText) findViewById(R.id.p_date);
+        dateField.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        int inputType = dateField.getInputType();
+                        dateField.setInputType(InputType.TYPE_NULL);
+                        PartyFactory.getNewOrCurrentParty().setStartTime(null);
+                        showDatePicker(v);
+                        dateField.setInputType(inputType);
+                        break;
+                }
+                return true;
+            }
+        });
+
         startTimeField  = (EditText) findViewById(R.id.p_start_t);
         startTimeField.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -108,11 +124,11 @@ public class ViewEditPartyActivity extends BaseActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        int inputType = startTimeField.getInputType();
-                        startTimeField.setInputType(InputType.TYPE_NULL);
+                        int inputType = endTimeField.getInputType();
+                        endTimeField.setInputType(InputType.TYPE_NULL);
                         PartyFactory.getNewOrCurrentParty().setEndTime(null);
                         showTimePicker(v);
-                        startTimeField.setInputType(inputType);
+                        endTimeField.setInputType(inputType);
                         break;
                 }
                 return true;
