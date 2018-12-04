@@ -12,6 +12,11 @@
     <string name="ask_end">Party End Time</string>
     <string name="ask_date">Party Date</string>
     <string name="back">Back</string>
+    <string name="card_prompt">Card Number</string>
+    <string name="card_name">Name on Card</string>
+    <string name="card_exp">Card Expire Date</string>
+    <string name="card_security">Security Code</string>
+    <string name="card_type">Card Type</string>
     <string name="delete">Delete</string>
     <string name="enter_name">Enter Party Name</string>
     <string name="enter_num_guests">Enter Number of Guests</string>
@@ -25,4 +30,8 @@
     <string name="check_out">Checkout</string>
     <string name="save">save</string>
     <string name="made_party_header">View/Edit Party</string>
+    <string name="commit">Enter Payment Info</string>
+    <string name="visa">VISA</string>
+    <string name="mastercard">MASTERCARD</string>
+    <string name="amex">AMERICAN EXPRESS</string>
 </resources>

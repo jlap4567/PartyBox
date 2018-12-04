@@ -7,9 +7,161 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background_blue"
-        android:gravity="bottom"
+        android:gravity="top"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="@string/commit"
+            android:textSize="40sp"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="@string/card_type"
+            android:textSize="20sp"
+            android:layout_gravity="center_horizontal"/>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="100dp" >
+
+            <RadioButton
+                android:id="@+id/radioButton3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/visa" />
+
+            <RadioButton
+                android:id="@+id/radioButton4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/mastercard" />
+
+            <RadioButton
+                android:id="@+id/radioButton5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/amex" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="@string/card_prompt"
+            android:textSize="20sp"
+            android:layout_gravity="center_horizontal"/>
+
+        <EditText
+            android:id="@+id/c_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="center_horizontal"
+            android:inputType="number"
+            android:phoneNumber="false"
+            android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="@string/card_name"
+            android:textSize="20sp"
+            android:layout_gravity="center_horizontal"/>
+
+        <EditText
+            android:id="@+id/c_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="center_horizontal"
+            android:inputType="textPersonName"
+            android:phoneNumber="false"
+            android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="@string/card_exp"
+            android:textSize="20sp"
+            android:layout_gravity="center_horizontal"/>
+
+        <EditText
+            android:id="@+id/c_expire"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="center_horizontal"
+            android:inputType="number"
+            android:phoneNumber="false"
+            android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="@string/card_security"
+            android:textSize="20sp"
+            android:layout_gravity="center_horizontal"/>
+
+        <EditText
+            android:id="@+id/c_security"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="center_horizontal"
+            android:inputType="numberPassword"
+            android:phoneNumber="false"
+            android:textStyle="italic" />
+
+        <!-- Linear Layout for buttons-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="81dp"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+
+            <!-- Back button-->
+            <Button
+                android:id="@+id/back"
+                android:layout_width="71dp"
+                android:layout_height="56dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/roundedbutton"
+                android:backgroundTint="@color/red"
+                android:text="@string/back"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:typeface="sans" />
+
+            <!-- Next button-->
+            <Button
+                android:id="@+id/next"
+                android:layout_width="71dp"
+                android:layout_height="56dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="225dp"
+                android:background="@drawable/roundedbutton"
+                android:backgroundTint="@color/blue"
+                android:text="@string/next"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:typeface="sans" />
+
+        </LinearLayout>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

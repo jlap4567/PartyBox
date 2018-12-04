@@ -20,7 +20,7 @@
         <activity android:name=".ActivityNewPartyFirst"></activity>
         <activity android:name=".MadePartyListActivity"></activity>
         <activity android:name=".ViewEditPartyActivity"></activity>
-
+        <activity android:name=".CommitAndPayActivity"></activity>
 
     </application>
 

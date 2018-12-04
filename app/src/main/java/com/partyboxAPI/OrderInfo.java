@@ -77,7 +77,7 @@ public class OrderInfo extends BaseBO {
             deliverBy = jsonObject.getString(JSON_TIME);
 
             JSONObject cartObject = jsonObject.getJSONObject(JSON_CART);
-            cart = new ShoppingCart();
+            cart = ShoppingCart.getInstance();
             cart.fromJSON(new JSONObjectWrapper(cartObject));
 
             JSONObject paymentObejct = jsonObject.getJSONObject(JSON_PAYMENT);

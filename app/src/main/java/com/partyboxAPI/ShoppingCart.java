@@ -25,7 +25,7 @@ public class ShoppingCart extends BaseBO {
         itemToQuantityMap = Maps.newHashMap();
     }
 
-    public ShoppingCart getInstance() {
+    public static ShoppingCart getInstance() {
         if (instance == null) {
             instance = new ShoppingCart();
         }
@@ -33,7 +33,7 @@ public class ShoppingCart extends BaseBO {
         return instance;
     }
 
-    public void clearInstance() {
+    public static void clearInstance() {
         instance = null;
     }
 

@@ -45,7 +45,7 @@ public class ActivityNewPartyFirst extends BaseActivity {
                     Log.i("UserInputError", e.getMessage());
                     // tell user something
                 }
-                switchToActivity(v, MainActivity.class, Direction.LEFT);
+                switchToActivity(v, MainActivity.class, Direction.RIGHT);
             }
         });
 
@@ -63,6 +63,9 @@ public class ActivityNewPartyFirst extends BaseActivity {
                 // Right now just print party contents to log and write to file
                 Log.i("Info", "Party:\n" + PartyFactory.getNewOrCurrentParty().toString());
                 writePartyToFile();
+
+                // go to payment screen for now, until Mike is done with store interface
+                switchToActivity(v, CommitAndPayActivity.class, Direction.LEFT);
             }
         });
 
@@ -140,8 +143,6 @@ public class ActivityNewPartyFirst extends BaseActivity {
         String partyDate = dateField.getText().toString();
         partyDate = partyDate.replace('/', '-');
         party.setDate(partyDate);
-//        party.setStartTime(startTimeField.getText().toString());
-//        party.setEndTime(endTimeField.getText().toString());
 
         int guestCount;
         try {
