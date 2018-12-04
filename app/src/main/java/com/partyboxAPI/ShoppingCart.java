@@ -9,6 +9,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Map;
+import java.util.Set;
+
 
 /**
  * Since all instances of items are unique, the ShoppingCart can merly be a map of each item to a quantity
@@ -18,6 +20,7 @@ public class ShoppingCart extends BaseBO {
     private static String JSON_ITEM = "item";
     private static String JSON_QUANTITY = "quantity";
     private static ShoppingCart instance;
+
 
     private Map<Item, Integer> itemToQuantityMap;
 
@@ -47,7 +50,7 @@ public class ShoppingCart extends BaseBO {
         try {
             JSONArray jsonArray = new JSONArray();
 
-            for (Item item: itemToQuantityMap.keySet()) {
+            for (Item item : itemToQuantityMap.keySet()) {
                 JSONObject keyValuePair = new JSONObject();
                 JSONObjectWrapper itemWrapper = item.toJSON();
                 keyValuePair.put(JSON_ITEM, itemWrapper.getObject());
@@ -91,5 +94,13 @@ public class ShoppingCart extends BaseBO {
         } catch (PartyBoxException e) {
             throw new SerializationException(getClass().getName(), e.getMessage());
         }
+    }
+
+    public double getTotalPrice() {
+        double totalPrice = 0;
+        for (Item key : itemToQuantityMap.keySet()) {
+            totalPrice += key.getPrice() * itemToQuantityMap.get(key);
+        }
+        return totalPrice;
     }
 }
