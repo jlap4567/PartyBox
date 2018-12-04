@@ -27,6 +27,7 @@ public class Party extends BaseBO {
     private String location;
     private String date;                // TODO: replace later with Date
     private String startTime, endTime;  // TODO: replace later with Time
+    private OrderInfo orderInfo;
     //private ShoppingCart shoppingCart; TODO: implement
 
     Party() {
@@ -147,5 +148,13 @@ public class Party extends BaseBO {
 
     public void setEndTime(String endTime) {
         this.endTime = endTime;
+    }
+
+    public OrderInfo getOrderInfo() {
+        return orderInfo;
+    }
+
+    public void setOrderInfo(OrderInfo orderInfo) {
+        this.orderInfo = orderInfo;
     }
 }

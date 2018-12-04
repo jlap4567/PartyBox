@@ -7,11 +7,17 @@ import com.partyboxAPI.exceptions.SerializationException;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
+import java.util.Locale;
+
 public class PaymentInfo extends BaseBO {
     private static String JSON_CARD_TYPE = "cardType";
     private static String JSON_CARD_NUMBER = "cardNumber";
     private static String JSON_CARD_NAME = "cardName";
     private static String JSON_CARD_SECURITY_CODE = "cardSecurityCode";
+    private static String JSON_CARD_EXPIRE = "cardExpire";
+
+    private static int CC_LENGTH = 16;
 
     public static enum CardType {
         VISA, MASTER_CARD, AMEX, DISCOCER
@@ -20,7 +26,60 @@ public class PaymentInfo extends BaseBO {
     private CardType cardType;
     private String cardNumber;
     private String cardName;
+    private String cardExpire;
     private int cardSecurityCode;
+
+    public boolean verify() {
+        if (cardNumber == null || cardNumber.isEmpty() || !isNumericString(cardNumber) || cardNumber.length() != CC_LENGTH) {
+            return false;
+        }
+
+        if (cardName == null || cardName.isEmpty()) {
+            return false;
+        }
+
+        if (cardType == null) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private boolean isNumericString(String str) {
+        for (Character c: str.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private boolean isCCDateFormat(String str) {
+        String[] tokens = str.split("/");
+        if (tokens.length != 2) {
+            return false;
+        }
+
+        if (tokens[0].isEmpty() || !isNumericString(tokens[0])) {
+            return false;
+        }
+
+        if (tokens[1].isEmpty() || !isNumericString(tokens[1])) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public String getCensoredCardNumber() {
+        String censored = "";
+        if (cardNumber != null && this.verify()) {
+            censored = cardNumber.substring(12, 16);
+        }
+
+        return censored;
+    }
 
     @Override
     public JSONObjectWrapper toJSON() throws PartyBoxException {
@@ -32,6 +91,8 @@ public class PaymentInfo extends BaseBO {
             jsonObject.put(JSON_CARD_NUMBER, cardNumber);
             jsonObject.put(JSON_CARD_TYPE, cardType.name());
             jsonObject.put(JSON_CARD_SECURITY_CODE, cardSecurityCode);
+            jsonObject.put(JSON_CARD_EXPIRE, cardExpire);
+
             jsonObjectWrapper = new JSONObjectWrapper(jsonObject);
         } catch (JSONException e) {
             throw new SerializationException(getClass().getName(), e.getMessage());
@@ -52,6 +113,7 @@ public class PaymentInfo extends BaseBO {
             cardName = jsonObject.getString(JSON_CARD_NAME);
             cardNumber = jsonObject.getString(JSON_CARD_NUMBER);
             cardSecurityCode = jsonObject.getInt(JSON_CARD_SECURITY_CODE);
+            cardExpire = jsonObject.getString(JSON_CARD_EXPIRE);
         } catch (JSONException e) {
             throw new SerializationException(getClass().getName(), e.getMessage());
         }
@@ -92,8 +154,21 @@ public class PaymentInfo extends BaseBO {
         this.cardSecurityCode = cardSecurityCode;
     }
 
+    public String getCardExpire() {
+        return cardExpire;
+    }
+
+    public void setCardExpire(String cardExpire) {
+        this.cardExpire = cardExpire;
+    }
+
     @Override
     public int hashCode() {
-        return hashObjects(ImmutableList.of(cardName, cardNumber, cardSecurityCode, cardType));
+        return hashObjects(ImmutableList.of(cardName, cardNumber, cardSecurityCode, cardType, cardExpire));
+    }
+
+    @Override
+    public String toString() {
+        return String.format(Locale.ENGLISH, "%s\n%s\n%s\n%d\n%s", cardName, cardNumber, cardType.name(), cardSecurityCode, cardExpire);
     }
 }

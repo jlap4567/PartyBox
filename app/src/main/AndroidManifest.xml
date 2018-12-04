@@ -21,6 +21,7 @@
         <activity android:name=".MadePartyListActivity"></activity>
         <activity android:name=".ViewEditPartyActivity"></activity>
         <activity android:name=".CommitAndPayActivity"></activity>
+        <activity android:name=".CheckoutActivity"></activity>
 
     </application>
 

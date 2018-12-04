@@ -24,6 +24,14 @@
     <string name="enter_location">Enter Party Location</string>
     <string name="enter_start">Enter Party Start Time</string>
     <string name="enter_end">Enter Party End Time</string>
+    <string name="enter_payment_prompt">Payment: </string>
+    <string name="enter_address_prompt">Address: </string>
+    <string name="empty_payment">Enter Payment</string>
+    <string name="empty_address">Enter Address</string>
+    <string name="add_symbol">+</string>
+    <string name="shipping_address_header">Shipping Address</string>
+    <string name="cart_contents_header">Cart Contents:</string>
+    <string name="order">ORDER</string>
     <string name="item">Item</string>
     <string name="price">$Price$</string>
     <string name="quantity">Quantity</string>

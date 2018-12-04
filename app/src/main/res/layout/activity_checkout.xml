@@ -18,6 +18,128 @@
             android:textSize="40sp"
             android:layout_gravity="center_horizontal"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/background_blue"
+            android:gravity="top"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="@string/enter_payment_prompt"
+                android:textSize="26sp"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:id="@+id/payment_summary"
+                android:layout_width="229dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:backgroundTint="@color/white"
+                android:text="@string/empty_payment"
+                android:textColor="@color/gray"
+                android:textSize="26sp" />
+
+            <Button
+                android:id="@+id/button_add_payment"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_weight="1"
+                android:background="@drawable/roundedbutton"
+                android:backgroundTint="@color/yellow"
+                android:text="@string/add_symbol"
+                android:textSize="28dp"/>
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/background_blue"
+        android:gravity="top"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="339dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/shipping_address_header"
+            android:textColor="@color/white"
+            android:textSize="26sp" />
+        <Button
+            android:id="@+id/button_add_address"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_weight="1"
+            android:background="@drawable/roundedbutton"
+            android:backgroundTint="@color/yellow"
+            android:text="@string/add_symbol"
+            android:textSize="28dp"/>
+    </LinearLayout>
+
+        <TextView
+            android:id="@+id/address_summary"
+            android:layout_width="wrap_content"
+            android:layout_height="116dp"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/white"
+            android:text="@string/empty_address"
+            android:textColor="@color/gray"
+            android:textSize="26sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="@string/cart_contents_header"
+            android:textSize="26sp"
+            android:layout_gravity="center_horizontal"/>
+        <ListView android:id="@android:id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:drawSelectorOnTop="false"
+            android:background="@color/white"/>
+
+        <!-- Linear Layout for buttons-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="81dp"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+
+            <!-- Back button-->
+            <Button
+                android:id="@+id/back"
+                android:layout_width="71dp"
+                android:layout_height="56dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/roundedbutton"
+                android:backgroundTint="@color/red"
+                android:text="@string/back"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:typeface="sans" />
+
+            <!-- Next button-->
+            <Button
+                android:id="@+id/next"
+                android:layout_width="71dp"
+                android:layout_height="56dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="225dp"
+                android:background="@drawable/roundedbutton"
+                android:backgroundTint="@color/blue"
+                android:text="@string/order"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:typeface="sans" />
+
+        </LinearLayout>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
