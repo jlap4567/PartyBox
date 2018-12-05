@@ -6,7 +6,9 @@ import com.partybox.exceptions.InvalidUserInputException;
 import com.partyboxAPI.exceptions.PartyBoxException;
 import com.partyboxAPI.exceptions.SerializationException;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
@@ -39,12 +41,13 @@ public class ActivityNewPartyFirst extends BaseActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    readFieldsAndPopulateParty(PartyFactory.getNewOrCurrentParty());
-                } catch (InvalidUserInputException e) {
-                    Log.i("UserInputError", e.getMessage());
-                    // tell user something
-                }
+//                try {
+//                    readFieldsAndPopulateParty(PartyFactory.getNewOrCurrentParty());
+//                } catch (InvalidUserInputException e) {
+//                    Log.i("UserInputError", e.getMessage());
+//                    // tell user something
+//                }
+                PartyFactory.clearCurrentParty();
                 switchToActivity(v, MainActivity.class, Direction.RIGHT);
             }
         });
@@ -59,13 +62,15 @@ public class ActivityNewPartyFirst extends BaseActivity {
                     Log.i("UserInputError", e.getMessage());
                     // tell user something
                 }
-                //switchToActivity(v, BrowseStoreActivity.class); TODO: Implement
-                // Right now just print party contents to log and write to file
-                Log.i("Info", "Party:\n" + PartyFactory.getNewOrCurrentParty().toString());
-                writePartyToFile();
 
-                // go to payment screen for now, until Mike is done with store interface
-                switchToActivity(v, CheckoutActivity.class, Direction.LEFT);
+                if (PartyFactory.getNewOrCurrentParty().verify()) {
+                    writePartyToFile();
+
+                    // go to payment screen for now, until Mike is done with store interface
+                    switchToActivity(v, CheckoutActivity.class, Direction.LEFT);
+                } else {
+                    showAlertDialog();
+                }
             }
         });
 
@@ -178,5 +183,18 @@ public class ActivityNewPartyFirst extends BaseActivity {
         } catch (UnsupportedEncodingException e) {
             throw new java.lang.RuntimeException(e.getMessage());
         }
+    }
+
+    private void showAlertDialog() {
+        AlertDialog alertDialog = new AlertDialog.Builder(ActivityNewPartyFirst.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("Fields Left Blank");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
     }
 }

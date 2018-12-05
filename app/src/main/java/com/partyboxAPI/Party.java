@@ -35,6 +35,38 @@ public class Party extends BaseBO {
     }
 
     /**
+     * Checks if any fields are empty
+     * @return
+     */
+    public boolean verify() {
+        if (name == null || name.isEmpty()) {
+            return false;
+        }
+
+        if (guestCount == null) {
+            return false;
+        }
+
+        if (location == null || location.isEmpty()) {
+            return false;
+        }
+
+        if (date == null || date.isEmpty()) {
+            return false;
+        }
+
+        if (startTime == null || startTime.isEmpty()) {
+            return false;
+        }
+
+        if (endTime == null || endTime.isEmpty()) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
      * The summary is the date:name of a party, this shall be the file name of each saved party + .party
      * @return
      */

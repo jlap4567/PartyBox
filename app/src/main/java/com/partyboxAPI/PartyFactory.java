@@ -67,7 +67,11 @@ public abstract class PartyFactory {
         File[] filesInPartyDir = partiesDirectory.listFiles();
         for (File file: filesInPartyDir) {
             Log.d("xxxxxxxx" , "File name: " + file.getName());
+            try {
             partySummaries.add(getPartySummaryFromFilename(file));
+            } catch (PartyBoxException e) {
+                Log.e("PARSE", "Unable to deserialize");
+            }
             /*if (verifyPartyFile(file)) {
                 try {
                     partySummaries.add(getPartySummaryFromFilename(file.getName()));
