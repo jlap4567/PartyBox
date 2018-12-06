@@ -65,7 +65,7 @@ public class ActivityNewPartyFirst extends BaseActivity {
                 writePartyToFile();
 
                 // go to payment screen for now, until Mike is done with store interface
-                switchToActivity(v, CheckoutActivity.class, Direction.LEFT);
+                switchToActivity(v, FoodListActivity.class, Direction.LEFT);
             }
         });
 
