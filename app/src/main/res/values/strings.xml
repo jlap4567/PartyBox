@@ -30,7 +30,7 @@
     <string name="empty_address">Enter Address</string>
     <string name="add_symbol">+</string>
     <string name="shipping_address_header">Shipping Address</string>
-    <string name="cart_contents_header">Cart Contents:</string>
+    <string name="cart_contents_header">Cart Contents: $</string>
     <string name="order">ORDER</string>
     <string name="item">Item</string>
     <string name="price">$Price$</string>
@@ -42,4 +42,5 @@
     <string name="visa">VISA</string>
     <string name="mastercard">MASTERCARD</string>
     <string name="amex">AMERICAN EXPRESS</string>
+    <string name="total_price">Total Price</string>
 </resources>

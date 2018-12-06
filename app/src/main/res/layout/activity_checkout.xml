@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -8,15 +10,17 @@
         android:layout_height="match_parent"
         android:background="@color/background_blue"
         android:gravity="top"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
+            android:layout_gravity="center_horizontal"
             android:text="@string/check_out"
-            android:textSize="40sp"
-            android:layout_gravity="center_horizontal"/>
+            android:textColor="@color/white"
+            android:textSize="40sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,13 +28,14 @@
             android:background="@color/background_blue"
             android:gravity="top"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
+                android:layout_gravity="center_horizontal"
                 android:text="@string/enter_payment_prompt"
-                android:textSize="26sp"
-                android:layout_gravity="center_horizontal"/>
+                android:textColor="@color/white"
+                android:textSize="26sp" />
 
             <TextView
                 android:id="@+id/payment_summary"
@@ -50,57 +55,81 @@
                 android:background="@drawable/roundedbutton"
                 android:backgroundTint="@color/yellow"
                 android:text="@string/add_symbol"
-                android:textSize="28dp"/>
+                android:textSize="28dp" />
         </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/background_blue"
-        android:gravity="top"
-        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/background_blue"
+            android:gravity="top"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="339dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/shipping_address_header"
-            android:textColor="@color/white"
-            android:textSize="26sp" />
-        <Button
-            android:id="@+id/button_add_address"
-            android:layout_width="0dp"
-            android:layout_height="38dp"
-            android:layout_weight="1"
-            android:background="@drawable/roundedbutton"
-            android:backgroundTint="@color/yellow"
-            android:text="@string/add_symbol"
-            android:textSize="28dp"/>
-    </LinearLayout>
+            <TextView
+                android:layout_width="339dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/shipping_address_header"
+                android:textColor="@color/white"
+                android:textSize="26sp" />
+
+            <Button
+                android:id="@+id/button_add_address"
+                android:layout_width="0dp"
+                android:layout_height="38dp"
+                android:layout_weight="1"
+                android:background="@drawable/roundedbutton"
+                android:backgroundTint="@color/yellow"
+                android:text="@string/add_symbol"
+                android:textSize="28dp" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/address_summary"
             android:layout_width="wrap_content"
-            android:layout_height="116dp"
+            android:layout_height="91dp"
             android:layout_gravity="center_horizontal"
             android:backgroundTint="@color/white"
             android:text="@string/empty_address"
             android:textColor="@color/gray"
             android:textSize="26sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:text="@string/cart_contents_header"
-            android:textSize="26sp"
-            android:layout_gravity="center_horizontal"/>
-        <ListView android:id="@android:id/list"
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:background="@color/background_blue"
+            android:gravity="top|center_horizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/cart_contents_header"
+                android:textColor="@color/white"
+                android:textSize="26sp" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/total_price"
+                android:textColor="@color/white"
+                android:textSize="26sp" />
+        </LinearLayout>
+
+
+
+        <ListView
+            android:id="@android:id/list"
+            android:layout_width="match_parent"
+            android:layout_height="183dp"
             android:layout_weight="1"
-            android:drawSelectorOnTop="false"
-            android:background="@color/white"/>
+            android:background="@color/white"
+            android:drawSelectorOnTop="false" />
 
         <!-- Linear Layout for buttons-->
         <LinearLayout

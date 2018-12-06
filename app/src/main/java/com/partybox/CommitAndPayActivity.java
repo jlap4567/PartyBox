@@ -5,12 +5,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.partyboxAPI.OrderInfo;
 import com.partyboxAPI.Party;
 import com.partyboxAPI.PartyFactory;
 import com.partyboxAPI.PaymentInfo;
+import com.partyboxAPI.ShoppingCart;
+
+import java.text.*;
 
 public class CommitAndPayActivity extends BaseActivity {
     private EditText cardName;
@@ -24,6 +29,7 @@ public class CommitAndPayActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_commit_and_pay);
+
 
         Button backButton = findViewById(R.id.back);
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -52,6 +58,14 @@ public class CommitAndPayActivity extends BaseActivity {
                 }
             }
         });
+        DecimalFormat df = new DecimalFormat("#.##");
+
+        //Make sure that this is tested
+        TextView priceText = findViewById(R.id.price);
+        Party party = PartyFactory.getNewOrCurrentParty();
+        if(party.getOrderInfo() != null && party.getOrderInfo().getCart() != null){
+            priceText.setText(df.format(party.getOrderInfo().getCart().getTotalPrice()));
+        }
 
         findInputs();
     }
@@ -64,6 +78,7 @@ public class CommitAndPayActivity extends BaseActivity {
         cardSecurity = findViewById(R.id.c_security);
         cardTypeSelector = findViewById(R.id.cardTypeGroup);
     }
+
 
     private PaymentInfo fillOutPaymentInfo() {
         PaymentInfo paymentInfo = new PaymentInfo();
