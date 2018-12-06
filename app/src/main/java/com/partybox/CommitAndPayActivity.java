@@ -58,14 +58,6 @@ public class CommitAndPayActivity extends BaseActivity {
                 }
             }
         });
-        DecimalFormat df = new DecimalFormat("#.##");
-
-        //Make sure that this is tested
-        TextView priceText = findViewById(R.id.price);
-        Party party = PartyFactory.getNewOrCurrentParty();
-        if(party.getOrderInfo() != null && party.getOrderInfo().getCart() != null){
-            priceText.setText(df.format(party.getOrderInfo().getCart().getTotalPrice()));
-        }
 
         findInputs();
     }

@@ -11,6 +11,8 @@ import org.json.JSONObject;
 import java.util.Map;
 import java.util.Set;
 
+import android.util.Log;
+
 
 /**
  * Since all instances of items are unique, the ShoppingCart can merly be a map of each item to a quantity
@@ -30,6 +32,7 @@ public class ShoppingCart extends BaseBO {
 
     public static ShoppingCart getInstance() {
         if (instance == null) {
+            Log.d("xxxxxxxxxx", "NEW CART LOL");
             instance = new ShoppingCart();
         }
 
@@ -102,5 +105,32 @@ public class ShoppingCart extends BaseBO {
             totalPrice += key.getPrice() * itemToQuantityMap.get(key);
         }
         return totalPrice;
+    }
+
+    public int getQuantity(Item item) {
+        if (itemToQuantityMap.containsKey(item)) {
+            return itemToQuantityMap.get(item);
+        }
+
+        return 0;
+    }
+
+    public void increaseQuantity(Item item) {
+        if (!itemToQuantityMap.containsKey(item)) {
+            itemToQuantityMap.put(item, 0);
+        }
+
+        itemToQuantityMap.put(item, itemToQuantityMap.get(item)  + 1);
+    }
+
+    public void decreaseQuantity(Item item) {
+        if (!itemToQuantityMap.containsKey(item)) {
+            return;
+        }
+
+        itemToQuantityMap.put(item, itemToQuantityMap.get(item) - 1);
+        if (itemToQuantityMap.get(item) == 0) {
+            itemToQuantityMap.remove(item);
+        }
     }
 }

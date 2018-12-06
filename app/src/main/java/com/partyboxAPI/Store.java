@@ -47,6 +47,17 @@ public abstract class Store extends BaseBO {
         }
     }
 
+    public static void init(String[] names, String[] prices, int[] images) {
+        if (names.length != prices.length) {
+            return;
+        }
+
+        itemMasterSet = Sets.newHashSet();
+        for (int i = 0; i < names.length; i++) {
+            itemMasterSet.add(ItemFactory.makeItem(names[i], prices[i], images[i]));
+        }
+    }
+
     /**
      * Free resources used by the store
      */
@@ -152,7 +163,7 @@ public abstract class Store extends BaseBO {
         return contents;
     }
 
-    protected static Set<Item> getMasterItemSet() {
+    public static Set<Item> getMasterItemSet() {
         return itemMasterSet;
     }
 }

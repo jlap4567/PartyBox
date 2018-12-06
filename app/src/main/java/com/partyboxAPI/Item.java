@@ -3,7 +3,9 @@ package com.partyboxAPI;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Sets;
+import com.partybox.BaseActivity;
 import com.partyboxAPI.exceptions.PartyBoxException;
 import com.partyboxAPI.exceptions.SerializationException;
 
@@ -53,7 +55,7 @@ public class Item extends BaseBO implements Comparable<Item> {
     /* tags may be some subtype of item, such as 'finger food' or 'beverage' or 'green' */
     private Set<String> tags;
     /* Is file name of image associated with product */
-    private String image;
+    private int image;
 
     public static enum Type {
         FOOD,
@@ -78,6 +80,17 @@ public class Item extends BaseBO implements Comparable<Item> {
             Log.e("JSON", "Unable to deserialize item");
             throw e;
         }
+    }
+
+    Item(String name,  String strPrice, int img) {
+        this.title = name;
+        strPrice = strPrice.substring(1);
+        this.price = Double.parseDouble(strPrice);
+        this.image = img;
+        this.priceUnit = PriceUnit.USDperItem;
+        this.type = Type.FOOD;
+        this.description = "";
+        this.tags = Sets.newHashSet();
     }
 
     @Override
@@ -118,7 +131,7 @@ public class Item extends BaseBO implements Comparable<Item> {
             price = jsonObject.getDouble(JSON_PRICE);
             priceUnit = PriceUnit.valueOf(jsonObject.getString(JSON_PRICE_UNIT));
             type = Type.valueOf(jsonObject.getString(JSON_TYPE));
-            image = jsonObject.getString(JSON_IMG_NAME);
+            image = jsonObject.getInt(JSON_IMG_NAME);
             tags = Sets.newHashSet();
 
             JSONArray tagArray = jsonObject.getJSONArray(JSON_TAGS);
@@ -160,7 +173,21 @@ public class Item extends BaseBO implements Comparable<Item> {
         return tags;
     }
 
-    public String getImage() {
+    public int getImage() {
         return image;
+    }
+
+    @Override
+    public int hashCode() {
+        return BaseBO.hashObjects(ImmutableList.of(title, description, type, price, priceUnit, tags, image));
+    }
+
+    @Override
+    public boolean equals(Object that) {
+        if (that == null) {
+            return false;
+        }
+
+        return this.hashCode() == that.hashCode();
     }
 }

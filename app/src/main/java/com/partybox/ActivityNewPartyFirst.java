@@ -1,5 +1,6 @@
 package com.partybox;
 
+import com.partyboxAPI.OrderInfo;
 import com.partyboxAPI.Party;
 import com.partyboxAPI.PartyFactory;
 import com.partybox.exceptions.InvalidUserInputException;
@@ -65,6 +66,7 @@ public class ActivityNewPartyFirst extends BaseActivity {
 
                 if (PartyFactory.getNewOrCurrentParty().verify()) {
                     writePartyToFile();
+                    PartyFactory.getNewOrCurrentParty().setOrderInfo(new OrderInfo());
 
                     // go to payment screen for now, until Mike is done with store interface
                     switchToActivity(v, FoodListActivity.class, Direction.LEFT);

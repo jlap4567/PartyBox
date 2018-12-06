@@ -12,9 +12,12 @@ import com.partyboxAPI.Party;
 import com.partyboxAPI.PartyFactory;
 import com.partyboxAPI.PaymentInfo;
 
+import java.util.Locale;
+
 public class CheckoutActivity extends BaseActivity {
     private TextView cardDisplay;
     private TextView addressDisplay;
+    private TextView cartTotalDisplay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,7 @@ public class CheckoutActivity extends BaseActivity {
 
         cardDisplay = findViewById(R.id.payment_summary);
         addressDisplay = findViewById(R.id.address_summary);
+        cartTotalDisplay = findViewById(R.id.price);
 
         Party party = PartyFactory.getNewOrCurrentParty();
         OrderInfo orderInfo = party.getOrderInfo();
@@ -57,6 +61,8 @@ public class CheckoutActivity extends BaseActivity {
                 String summaryString = paymentInfo.getCardType().name() + " *" + paymentInfo.getCensoredCardNumber();
                 cardDisplay.setText(summaryString);
             }
+
+            cartTotalDisplay.setText(String.format(Locale.ENGLISH, "%.2f", orderInfo.getCart().getTotalPrice()));
         }
     }
 }

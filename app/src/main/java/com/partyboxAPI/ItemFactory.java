@@ -15,4 +15,8 @@ abstract class ItemFactory extends BaseBO {
 
         return item;
     }
+
+    static Item makeItem(String name, String price, int img) {
+        return new Item(name, price, img);
+    }
 }

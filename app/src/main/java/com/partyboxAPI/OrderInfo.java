@@ -28,7 +28,7 @@ public class OrderInfo extends BaseBO {
     private String deliverBy;
 
     public OrderInfo() {
-
+        cart = ShoppingCart.getInstance();
     }
 
     @Override
