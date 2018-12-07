@@ -43,4 +43,5 @@
     <string name="mastercard">MASTERCARD</string>
     <string name="amex">AMERICAN EXPRESS</string>
     <string name="total_price">Total Price</string>
+    <string name="PartyBox">Party Box</string>
 </resources>

@@ -10,14 +10,34 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background_blue"
-        android:gravity="center"
+        android:gravity="bottom"
         android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/iconsmall" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/PartyBox"
+            android:textAllCaps="true"
+            android:textColor="@color/yellow"
+            android:layout_margin="20dp"
+            android:textSize="50dp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/new_party"
             android:layout_width="150dp"
             android:layout_height="100dp"
-            android:layout_margin="10dp"
+            android:layout_gravity="center_horizontal"
             android:background="@drawable/roundedbutton"
             android:backgroundTint="@color/red"
             android:text="@string/new_party"
@@ -30,7 +50,8 @@
             android:id="@+id/made_party"
             android:layout_width="150dp"
             android:layout_height="100dp"
-            android:layout_margin="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="20dp"
             android:background="@drawable/roundedbutton"
             android:backgroundTint="@color/pastel_green"
             android:text="@string/made_party"
