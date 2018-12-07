@@ -1,6 +1,5 @@
 package com.partyboxAPI;
 
-import android.provider.Telephony;
 import android.util.Log;
 
 import com.partyboxAPI.exceptions.CorruptPartyFileException;
@@ -10,7 +9,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 /**
  * Holds information on identifying parties without loading the entire party into memory.

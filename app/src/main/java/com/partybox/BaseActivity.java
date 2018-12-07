@@ -1,14 +1,12 @@
 package com.partybox;
 
 import android.app.Activity;
-import android.app.ListActivity;
-import android.content.Context;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Environment;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 
 import com.partybox.dialogs.DatePickerfragment;
@@ -16,8 +14,6 @@ import com.partybox.dialogs.TimePickerFragment;
 
 import java.io.File;
 import java.io.FileFilter;
-import java.util.Arrays;
-import java.util.Collections;
 
 /**
  * Put stuff here that every activity needs to use
@@ -116,5 +112,19 @@ public abstract class BaseActivity extends FragmentActivity {
      */
     public void updateOnDialogClose(int mode, String data) {
 
+    }
+
+
+    protected void showAlertDialog(String title, String mesg) {
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setTitle(title);
+        alertDialog.setMessage(mesg);
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
     }
 }

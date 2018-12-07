@@ -6,7 +6,6 @@ import android.support.v4.app.DialogFragment;
 import android.app.DatePickerDialog;
 import android.widget.DatePicker;
 
-import com.partybox.ActivityNewPartyFirst;
 import com.partybox.BaseActivity;
 import com.partyboxAPI.Party;
 import com.partyboxAPI.PartyFactory;

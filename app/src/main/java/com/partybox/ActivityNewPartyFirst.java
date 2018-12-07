@@ -4,11 +4,10 @@ import com.partyboxAPI.OrderInfo;
 import com.partyboxAPI.Party;
 import com.partyboxAPI.PartyFactory;
 import com.partybox.exceptions.InvalidUserInputException;
+import com.partyboxAPI.ShoppingCart;
 import com.partyboxAPI.exceptions.PartyBoxException;
-import com.partyboxAPI.exceptions.SerializationException;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.InputType;
@@ -18,14 +17,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-import java.util.Arrays;
 
 public class ActivityNewPartyFirst extends BaseActivity {
+    private static String ALERT_MESG = "Field(s) left blank";
+    private static String ALERT_TITLE = "Incomplete Form";
+
     EditText nameField;
     EditText dateField;
     EditText startTimeField;
@@ -42,13 +42,8 @@ public class ActivityNewPartyFirst extends BaseActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                try {
-//                    readFieldsAndPopulateParty(PartyFactory.getNewOrCurrentParty());
-//                } catch (InvalidUserInputException e) {
-//                    Log.i("UserInputError", e.getMessage());
-//                    // tell user something
-//                }
                 PartyFactory.clearCurrentParty();
+                ShoppingCart.clearInstance();
                 switchToActivity(v, MainActivity.class, Direction.RIGHT);
             }
         });
@@ -61,17 +56,15 @@ public class ActivityNewPartyFirst extends BaseActivity {
                     readFieldsAndPopulateParty(PartyFactory.getNewOrCurrentParty());
                 } catch (InvalidUserInputException e) {
                     Log.i("UserInputError", e.getMessage());
-                    // tell user something
+                    showAlertDialog(ALERT_TITLE, ALERT_MESG);
                 }
 
                 if (PartyFactory.getNewOrCurrentParty().verify()) {
                     writePartyToFile();
                     PartyFactory.getNewOrCurrentParty().setOrderInfo(new OrderInfo());
-
-                    // go to payment screen for now, until Mike is done with store interface
                     switchToActivity(v, FoodListActivity.class, Direction.LEFT);
                 } else {
-                    showAlertDialog();
+                    showAlertDialog(ALERT_TITLE, ALERT_MESG);
                 }
             }
         });
@@ -185,18 +178,5 @@ public class ActivityNewPartyFirst extends BaseActivity {
         } catch (UnsupportedEncodingException e) {
             throw new java.lang.RuntimeException(e.getMessage());
         }
-    }
-
-    private void showAlertDialog() {
-        AlertDialog alertDialog = new AlertDialog.Builder(ActivityNewPartyFirst.this).create();
-        alertDialog.setTitle("Alert");
-        alertDialog.setMessage("Fields Left Blank");
-        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        alertDialog.show();
     }
 }

@@ -9,7 +9,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Map;
-import java.util.Set;
 
 import android.util.Log;
 
@@ -32,7 +31,6 @@ public class ShoppingCart extends BaseBO {
 
     public static ShoppingCart getInstance() {
         if (instance == null) {
-            Log.d("xxxxxxxxxx", "NEW CART LOL");
             instance = new ShoppingCart();
         }
 

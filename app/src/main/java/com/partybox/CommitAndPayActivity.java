@@ -5,17 +5,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import com.partyboxAPI.OrderInfo;
 import com.partyboxAPI.Party;
 import com.partyboxAPI.PartyFactory;
 import com.partyboxAPI.PaymentInfo;
-import com.partyboxAPI.ShoppingCart;
-
-import java.text.*;
 
 public class CommitAndPayActivity extends BaseActivity {
     private EditText cardName;
@@ -47,7 +42,6 @@ public class CommitAndPayActivity extends BaseActivity {
                 if (paymentInfo == null) {
                     //show dialog
                 } else {
-                    Log.d("xxxxxxxxx", paymentInfo.toString());
                     Party currentPartry = PartyFactory.getNewOrCurrentParty();
                     if (currentPartry.getOrderInfo() == null) {
                         currentPartry.setOrderInfo(new OrderInfo());

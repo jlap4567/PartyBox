@@ -19,11 +19,10 @@ import java.util.Set;
 
 /**
  *  Static Store class.
- *  Client code is restricted from pulling the entire store at once. Client code should use
- *  filter function to return a subset of the item set.
+ *  <s>Client code is restricted from pulling the entire store at once. Client code should use
+ *  filter function to return a subset of the item set.</s> Fuck it, pull the while thing now
  */
 public abstract class Store extends BaseBO {
-    static final int RETRIES = 3;
     private static Set<Item> itemMasterSet = null;
     private static Map<Item.Type, Set<Item>> typeTable = null;
     private static Map<String, Set<Item>> tagTable = null;
@@ -47,6 +46,12 @@ public abstract class Store extends BaseBO {
         }
     }
 
+    /**
+     * Init function for hardcoded values
+     * @param names
+     * @param prices
+     * @param images
+     */
     public static void init(String[] names, String[] prices, int[] images) {
         if (names.length != prices.length) {
             return;
@@ -121,9 +126,7 @@ public abstract class Store extends BaseBO {
     }
 
     private static void populateItemSets(String itemSetJSON) throws PartyBoxException,JSONException {
-        System.out.println(itemSetJSON);
         JSONArray itemArray = new JSONArray(itemSetJSON);
-        System.out.println(itemArray.toString());
         for (int i = 0; i < itemArray.length(); i++) {
             JSONObject itemJSONObject = itemArray.getJSONObject(i);
             System.out.println(itemJSONObject.toString());

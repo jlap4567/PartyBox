@@ -23,12 +23,11 @@ public class Party extends BaseBO {
     private static final String JSON_END_TIME = "endTime";
 
     private String name;
-    private Integer guestCount;         // TODO: replace later with guest list
+    private Integer guestCount;
     private String location;
-    private String date;                // TODO: replace later with Date
-    private String startTime, endTime;  // TODO: replace later with Time
+    private String date;
+    private String startTime, endTime;
     private OrderInfo orderInfo;
-    //private ShoppingCart shoppingCart; TODO: implement
 
     Party() {
         // protected constructor for PartyFactory

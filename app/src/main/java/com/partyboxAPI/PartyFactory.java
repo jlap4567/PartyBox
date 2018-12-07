@@ -7,7 +7,6 @@ import com.partyboxAPI.exceptions.PartyBoxException;
 import com.partyboxAPI.exceptions.SavedPartiesDirectoryNotFoundException;
 
 import java.io.File;
-import java.util.Arrays;
 import java.util.Set;
 
 /**
@@ -66,7 +65,6 @@ public abstract class PartyFactory {
 
         File[] filesInPartyDir = partiesDirectory.listFiles();
         for (File file: filesInPartyDir) {
-            Log.d("xxxxxxxx" , "File name: " + file.getName());
             try {
             partySummaries.add(getPartySummaryFromFilename(file));
             } catch (PartyBoxException e) {
@@ -88,17 +86,12 @@ public abstract class PartyFactory {
         return partySummaries;
     }
 
-    private static boolean verifyPartyFile(File file) {
-        return file.exists() && file.isFile() && file.getName().matches(PARTY_FILENAME_REGEX) && file.getName().endsWith(PARTY_FILE_PREFIX);
-    }
-
     private static PartySummary getPartySummaryFromFilename(File file) throws PartyBoxException {
         String fileName = file.getName();
-        String partyCode = fileName; //.substring(0, fileName.indexOf(PARTY_FILE_PREFIX));
+        String partyCode = fileName;
         int seperationIndex = partyCode.indexOf(":");
         String partyDate = partyCode.substring(0, seperationIndex);
         String partyName = partyCode.substring(seperationIndex+1, partyCode.indexOf(".party"));
-        Log.d("xxxxxxxxx", "Date: " + partyDate + "\tName: " + partyName);
         try {
             return new PartySummary(file.getPath(), partyDate, partyName);
         } catch (PartyBoxException e) {

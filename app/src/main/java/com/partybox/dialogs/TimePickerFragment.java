@@ -4,11 +4,8 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.app.TimePickerDialog;
-import android.text.format.DateFormat;
 import android.widget.TimePicker;
 
-//import java.text.DateFormat;
-import com.partybox.ActivityNewPartyFirst;
 import com.partybox.BaseActivity;
 import com.partyboxAPI.Party;
 import com.partyboxAPI.PartyFactory;

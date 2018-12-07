@@ -5,7 +5,6 @@ import android.util.Log;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Sets;
-import com.partybox.BaseActivity;
 import com.partyboxAPI.exceptions.PartyBoxException;
 import com.partyboxAPI.exceptions.SerializationException;
 
@@ -28,6 +27,7 @@ import java.util.Set;
  *         "type": "FOOD",
  *         "price": 1.50,
  *         "priceUnit": "USDperItem",
+ *         "sku": "sku1234567",
  *         "tags":
  *         [
  *              "chips",

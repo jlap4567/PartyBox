@@ -5,8 +5,8 @@ import com.partyboxAPI.exceptions.PartyBoxException;
 import java.util.List;
 
 abstract class BaseBO {
-    static final int BASE_PRIME = 53;
-    static final int OBJECT_PRIME = 17;
+    private static final int BASE_PRIME = 53;
+    private static final int OBJECT_PRIME = 17;
 
     /**
      * Return JSOnObjectWrapper containing compressed, parsable JSON

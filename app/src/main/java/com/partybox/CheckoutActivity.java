@@ -5,8 +5,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.partybox.BaseActivity;
-import com.partybox.R;
 import com.partyboxAPI.OrderInfo;
 import com.partyboxAPI.Party;
 import com.partyboxAPI.PartyFactory;

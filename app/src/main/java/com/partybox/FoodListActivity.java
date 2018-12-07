@@ -1,33 +1,23 @@
 package com.partybox;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.google.common.collect.Lists;
 import com.partyboxAPI.Item;
 import com.partyboxAPI.OrderInfo;
-import com.partyboxAPI.Party;
 import com.partyboxAPI.PartyFactory;
-import com.partybox.exceptions.InvalidUserInputException;
 import com.partyboxAPI.ShoppingCart;
 import com.partyboxAPI.Store;
-import com.partyboxAPI.exceptions.PartyBoxException;
-import com.partyboxAPI.PartyFactory;
 
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
@@ -49,13 +39,6 @@ public class FoodListActivity extends BaseActivity {
         ListView listView = (ListView) findViewById(R.id.listView);
         CustomAdapter customAdapter = new CustomAdapter();
         listView.setAdapter(customAdapter);
-
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                switchToActivity(view, CheckoutActivity.class, Direction.LEFT);
-//            }
-//        });
 
         Button backButton = findViewById(R.id.back);
         backButton.setOnClickListener(new View.OnClickListener() {

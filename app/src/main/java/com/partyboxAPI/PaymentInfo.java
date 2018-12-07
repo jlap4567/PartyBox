@@ -7,7 +7,6 @@ import com.partyboxAPI.exceptions.SerializationException;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.List;
 import java.util.Locale;
 
 public class PaymentInfo extends BaseBO {
@@ -18,9 +17,10 @@ public class PaymentInfo extends BaseBO {
     private static String JSON_CARD_EXPIRE = "cardExpire";
 
     private static int CC_LENGTH = 16;
+    private static String DATE_DELIM = "/";
 
     public static enum CardType {
-        VISA, MASTER_CARD, AMEX, DISCOCER
+        VISA, MASTER_CARD, AMEX, DISCOVER
     };
 
     private CardType cardType;
@@ -56,7 +56,7 @@ public class PaymentInfo extends BaseBO {
     }
 
     private boolean isCCDateFormat(String str) {
-        String[] tokens = str.split("/");
+        String[] tokens = str.split(DATE_DELIM);
         if (tokens.length != 2) {
             return false;
         }
@@ -72,6 +72,9 @@ public class PaymentInfo extends BaseBO {
         return true;
     }
 
+    /**
+     * @return VISA *1234, AMEX *1234
+     */
     public String getCensoredCardNumber() {
         String censored = "";
         if (cardNumber != null && this.verify()) {

@@ -16,6 +16,9 @@ import com.partyboxAPI.Party;
 import com.partyboxAPI.PartyFactory;
 
 public class ViewEditPartyActivity extends BaseActivity {
+    private static char OLD_DATE_DELIM = '-';
+    private static char NEW_DATE_DELIM = '/';
+
     EditText nameField;
     EditText dateField;
     EditText startTimeField;
@@ -138,7 +141,7 @@ public class ViewEditPartyActivity extends BaseActivity {
         locationField = (EditText) findViewById(R.id.p_location);
 
         nameField.setText(party.getName());
-        dateField.setText(party.getDate().replace('-','/'));
+        dateField.setText(party.getDate().replace(OLD_DATE_DELIM,NEW_DATE_DELIM));
         startTimeField.setText(party.getStartTime());
         endTimeField.setText(party.getEndTime());
         locationField.setText(party.getLocation());
