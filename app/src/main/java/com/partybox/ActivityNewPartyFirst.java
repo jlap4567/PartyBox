@@ -7,8 +7,6 @@ import com.partybox.exceptions.InvalidUserInputException;
 import com.partyboxAPI.ShoppingCart;
 import com.partyboxAPI.exceptions.PartyBoxException;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
@@ -57,6 +55,7 @@ public class ActivityNewPartyFirst extends BaseActivity {
                 } catch (InvalidUserInputException e) {
                     Log.i("UserInputError", e.getMessage());
                     showAlertDialog(ALERT_TITLE, ALERT_MESG);
+                    return;
                 }
 
                 if (PartyFactory.getNewOrCurrentParty().verify()) {
@@ -122,6 +121,10 @@ public class ActivityNewPartyFirst extends BaseActivity {
         });
         guestCountField = (EditText) findViewById(R.id.p_guests);
         locationField = (EditText) findViewById(R.id.p_location);
+
+        if (PartyFactory.hasInstance()) {
+            setFieldsFromExistingParty();
+        }
     }
 
     @Override
@@ -177,6 +180,21 @@ public class ActivityNewPartyFirst extends BaseActivity {
             throw new java.lang.RuntimeException(e.getMessage() + "\nPath: " + fileName);
         } catch (UnsupportedEncodingException e) {
             throw new java.lang.RuntimeException(e.getMessage());
+        }
+    }
+
+    private void setFieldsFromExistingParty() {
+        Party party = PartyFactory.getNewOrCurrentParty();
+        // Set text is null-safe
+        nameField.setText(party.getName());
+        dateField.setText(party.getDate());
+        startTimeField.setText(party.getStartTime());
+        endTimeField.setText(party.getEndTime());
+        locationField.setText(party.getLocation());
+
+        if (party.getGuestCount() != null) {
+            // toString is not
+            guestCountField.setText(Integer.toString(party.getGuestCount()));
         }
     }
 }

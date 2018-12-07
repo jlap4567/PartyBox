@@ -29,6 +29,10 @@ public abstract class PartyFactory {
         currentParty = null;
     };
 
+    public static boolean hasInstance() {
+        return currentParty != null;
+    };
+
     public static Party initNewPartyFromJSON(JSONObjectWrapper jsonObjectWrapper) throws PartyBoxException {
         currentParty = new Party();
         currentParty.fromJSON(jsonObjectWrapper);

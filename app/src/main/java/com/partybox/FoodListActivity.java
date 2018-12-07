@@ -44,7 +44,6 @@ public class FoodListActivity extends BaseActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ShoppingCart.clearInstance();
                 switchToActivity(v, ActivityNewPartyFirst.class, Direction.RIGHT);
             }
         });
