@@ -183,7 +183,7 @@
                 android:layout_marginLeft="225dp"
                 android:background="@drawable/roundedbutton"
                 android:backgroundTint="@color/blue"
-                android:text="@string/next"
+                android:text="@string/save"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"

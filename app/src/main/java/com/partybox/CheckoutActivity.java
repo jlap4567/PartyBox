@@ -3,8 +3,10 @@ package com.partybox;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.partybox.adapters.ShoppingCartItemAdapter;
 import com.partyboxAPI.OrderInfo;
 import com.partyboxAPI.Party;
 import com.partyboxAPI.PartyFactory;
@@ -50,6 +52,10 @@ public class CheckoutActivity extends BaseActivity {
         cardDisplay = findViewById(R.id.payment_summary);
         addressDisplay = findViewById(R.id.address_summary);
         cartTotalDisplay = findViewById(R.id.price);
+
+        ShoppingCartItemAdapter adapter = new ShoppingCartItemAdapter(this, R.layout.checkout_item_entry);
+        ListView listView = findViewById(R.id.checkout_item_list);
+        listView.setAdapter(adapter);
 
         Party party = PartyFactory.getNewOrCurrentParty();
         OrderInfo orderInfo = party.getOrderInfo();
