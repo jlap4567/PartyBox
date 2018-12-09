@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.google.common.collect.Lists;
 import com.partyboxAPI.Item;
 import com.partyboxAPI.OrderInfo;
+import com.partyboxAPI.Party;
 import com.partyboxAPI.PartyFactory;
 import com.partyboxAPI.ShoppingCart;
 import com.partyboxAPI.Store;
@@ -52,7 +53,11 @@ public class FoodListActivity extends BaseActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PartyFactory.getNewOrCurrentParty().setOrderInfo(new OrderInfo());
+                Party party = PartyFactory.getNewOrCurrentParty();
+                if (party.getOrderInfo() == null) {
+                    PartyFactory.getNewOrCurrentParty().setOrderInfo(new OrderInfo());
+                }
+
                 switchToActivity(v, CheckoutActivity.class, Direction.LEFT);
             }
         });

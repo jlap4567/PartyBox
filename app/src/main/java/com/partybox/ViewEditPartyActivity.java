@@ -42,6 +42,8 @@ public class ViewEditPartyActivity extends BaseActivity {
                     Log.i("UserInputError", e.getMessage());
                     // tell user something
                 }
+
+                PartyFactory.clearCurrentParty();
                 switchToActivity(v, MadePartyListActivity.class, Direction.RIGHT);
             }
         });
@@ -56,6 +58,7 @@ public class ViewEditPartyActivity extends BaseActivity {
                 }
 
                 BaseActivity.currentPartyPath = null;
+                PartyFactory.clearCurrentParty();
                 switchToActivity(v, MadePartyListActivity.class, Direction.RIGHT);
             }
         });

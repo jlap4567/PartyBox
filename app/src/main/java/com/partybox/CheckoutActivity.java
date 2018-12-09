@@ -44,7 +44,6 @@ public class CheckoutActivity extends BaseActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // change to store interface when Mike finishes it
                 switchToActivity(v, FoodListActivity.class, Direction.LEFT);
             }
         });
