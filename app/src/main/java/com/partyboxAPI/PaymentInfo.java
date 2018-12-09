@@ -18,9 +18,14 @@ public class PaymentInfo extends BaseBO {
 
     private static int CC_LENGTH = 16;
     private static String DATE_DELIM = "/";
+    private static int CC_DATE_MONTH_LO = 1;
+    private static int CC_DATE_MONTH_HI = 12;
+    private static int CC_DATE_YEAR_LO = 18;
+    private static int CC_DATE_YEAR_HI = 99;
+
 
     public static enum CardType {
-        VISA, MASTER_CARD, AMEX, DISCOVER
+        VISA, MC /*MASTERCARD won't fit on the screen*/, AMEX, DISCOVER
     };
 
     private CardType cardType;
@@ -29,6 +34,10 @@ public class PaymentInfo extends BaseBO {
     private String cardExpire;
     private int cardSecurityCode;
 
+    /**
+     * Verifies model fields populated correctly
+     * @return
+     */
     public boolean verify() {
         if (cardNumber == null || cardNumber.isEmpty() || !isNumericString(cardNumber) || cardNumber.length() != CC_LENGTH) {
             return false;
@@ -39,6 +48,10 @@ public class PaymentInfo extends BaseBO {
         }
 
         if (cardType == null) {
+            return false;
+        }
+
+        if (cardExpire == null || !isCCDateFormat(cardExpire)) {
             return false;
         }
 
@@ -61,15 +74,20 @@ public class PaymentInfo extends BaseBO {
             return false;
         }
 
-        if (tokens[0].isEmpty() || !isNumericString(tokens[0])) {
+        if (tokens[0].isEmpty() || !isNumericString(tokens[0]) || !numericStringInRange(tokens[0], CC_DATE_MONTH_LO, CC_DATE_MONTH_HI)) {
             return false;
         }
 
-        if (tokens[1].isEmpty() || !isNumericString(tokens[1])) {
+        if (tokens[1].isEmpty() || !isNumericString(tokens[1]) || !numericStringInRange(tokens[1], CC_DATE_YEAR_LO, CC_DATE_YEAR_HI)) {
             return false;
         }
 
         return true;
+    }
+
+    private boolean numericStringInRange(String str, int lo, int hi) {
+        int number = Integer.parseInt(str);
+        return number >= lo && number <= hi;
     }
 
     /**

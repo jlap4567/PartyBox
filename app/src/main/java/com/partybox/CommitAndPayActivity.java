@@ -1,7 +1,6 @@
 package com.partybox;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,7 +39,7 @@ public class CommitAndPayActivity extends BaseActivity {
             public void onClick(View v) {
                 PaymentInfo paymentInfo = fillOutPaymentInfo();
                 if (paymentInfo == null) {
-                    //show dialog
+                    showAlertDialog("Invalid Payment", "Please enter valid card information");
                 } else {
                     Party currentPartry = PartyFactory.getNewOrCurrentParty();
                     if (currentPartry.getOrderInfo() == null) {
@@ -77,7 +76,7 @@ public class CommitAndPayActivity extends BaseActivity {
                 paymentInfo.setCardType(PaymentInfo.CardType.VISA);
                 break;
             case R.id.mastercardButton:
-                paymentInfo.setCardType(PaymentInfo.CardType.MASTER_CARD);
+                paymentInfo.setCardType(PaymentInfo.CardType.MC);
                 break;
             case R.id.amexButton:
                 paymentInfo.setCardType(PaymentInfo.CardType.AMEX);
