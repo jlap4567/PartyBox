@@ -29,6 +29,19 @@ public class OrderInfo extends BaseBO {
 
     public OrderInfo() {
         cart = ShoppingCart.getInstance();
+        // Party should not be null since should only be called after NewPartyFirst
+        if (PartyFactory.hasInstance()) {
+            Party party = PartyFactory.getNewOrCurrentParty();
+            date = party.getDate();
+            deliverBy = party.getStartTime();
+        }
+
+        // hard code address/name for now until Jacob is done with address screen
+        firstName = "John";
+        lastName = "Johnson";
+        address = "123 First Street";
+        city = "Camden";
+        zip = "12345";
     }
 
     @Override
@@ -44,8 +57,8 @@ public class OrderInfo extends BaseBO {
             jsonObject.put(JSON_DATE, date);
             jsonObject.put(JSON_TIME, deliverBy);
 
-            JSONObjectWrapper paymentObject = paymentInfo.toJSON();
-            jsonObject.put(JSON_PAYMENT, paymentObject.getObject());
+//            JSONObjectWrapper paymentObject = paymentInfo.toJSON();
+//            jsonObject.put(JSON_PAYMENT, paymentObject.getObject());
 
             JSONObjectWrapper carObject = cart.toJSON();
             jsonObject.put(JSON_CART, carObject.getArray());

@@ -23,11 +23,11 @@ public class JSONObjectWrapper {
         this.object = object;
     }
 
-    protected JSONObject getObject() {
+    public JSONObject getObject() {
         return object;
     }
 
-    protected JSONArray getArray() {
+    public JSONArray getArray() {
         return array;
     }
 

@@ -46,6 +46,7 @@ public class Item extends BaseBO implements Comparable<Item> {
     private static final String JSON_PRICE_UNIT = "priceUnit";
     private static final String JSON_TAGS = "tags";
     private static final String JSON_IMG_NAME = "img";
+    private static final String JSON_SKU = "sku";
 
     private String title;
     private String description;
@@ -93,6 +94,14 @@ public class Item extends BaseBO implements Comparable<Item> {
         this.tags = Sets.newHashSet();
     }
 
+    private String generateSku() {
+        int num = new java.util.Random().nextInt();
+        if (num < 0) {
+            num *= -1;
+        }
+        return "sku" + Integer.toString(num);
+    }
+
     @Override
     public JSONObjectWrapper toJSON() throws PartyBoxException {
         JSONObject itemJSONObject = new JSONObject();
@@ -104,6 +113,7 @@ public class Item extends BaseBO implements Comparable<Item> {
             itemJSONObject.put(JSON_PRICE_UNIT, priceUnit.name());
             itemJSONObject.put(JSON_TYPE, type.name());
             itemJSONObject.put(JSON_IMG_NAME, image);
+            itemJSONObject.put(JSON_SKU, generateSku());
 
             JSONArray tagSet = new JSONArray();
             for (String tag: tags) {
@@ -175,6 +185,10 @@ public class Item extends BaseBO implements Comparable<Item> {
 
     public int getImage() {
         return image;
+    }
+
+    public String getSku() {
+        return generateSku();
     }
 
     @Override

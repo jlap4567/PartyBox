@@ -13,6 +13,9 @@ import com.partyboxAPI.PartyFactory;
 import java.util.Calendar;
 import java.util.Locale;
 
+/**
+ * Time Picker dialog
+ */
 public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

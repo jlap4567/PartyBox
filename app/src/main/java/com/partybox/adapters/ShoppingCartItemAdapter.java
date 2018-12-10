@@ -12,12 +12,13 @@ import android.widget.TextView;
 import com.google.common.collect.Lists;
 import com.partybox.R;
 import com.partyboxAPI.Item;
-import com.partyboxAPI.PartySummary;
 import com.partyboxAPI.ShoppingCart;
 
 import java.util.ArrayList;
-import java.util.Set;
 
+/**
+ * Adapter for item list on checkout screen
+ */
 public class ShoppingCartItemAdapter extends ArrayAdapter<Item> {
     public ShoppingCartItemAdapter(Context context, ArrayList<Item> summaries) {
         super(context, 0, summaries);

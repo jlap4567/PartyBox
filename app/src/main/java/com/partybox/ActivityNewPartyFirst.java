@@ -20,6 +20,10 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
+/**
+ * Screen where user enters party details such as:
+ *  Date, time guest count, etc..
+ */
 public class ActivityNewPartyFirst extends BaseActivity {
     private static String ALERT_MESG = "Field(s) left blank";
     private static String ALERT_TITLE = "Incomplete Form";

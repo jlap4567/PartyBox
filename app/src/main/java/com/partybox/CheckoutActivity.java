@@ -2,6 +2,7 @@ package com.partybox;
 
 import android.os.Bundle;
 import android.view.View;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -11,6 +12,8 @@ import com.partyboxAPI.OrderInfo;
 import com.partyboxAPI.Party;
 import com.partyboxAPI.PartyFactory;
 import com.partyboxAPI.PaymentInfo;
+import com.partyboxAPI.ShoppingCart;
+import com.partyboxAPI.exceptions.PartyBoxException;
 
 import java.util.Locale;
 
@@ -56,7 +59,7 @@ public class CheckoutActivity extends BaseActivity {
         ListView listView = findViewById(R.id.checkout_item_list);
         listView.setAdapter(adapter);
 
-        Party party = PartyFactory.getNewOrCurrentParty();
+        final Party party = PartyFactory.getNewOrCurrentParty();
         OrderInfo orderInfo = party.getOrderInfo();
         if (orderInfo != null) {
             PaymentInfo paymentInfo = orderInfo.getPaymentInfo();
@@ -67,5 +70,18 @@ public class CheckoutActivity extends BaseActivity {
 
             cartTotalDisplay.setText(String.format(Locale.ENGLISH, "%.2f", orderInfo.getCart().getTotalPrice()));
         }
+
+        //TODO show dialog if order info is not complete
+        Button orderButton = findViewById(R.id.order);
+        orderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Log.d("xxxxxxxxx", party.getOrderInfo().toJSON().toString());
+                } catch (PartyBoxException e) {
+                    Log.d("xxxxxxxxx", "FAILED: " + e.getMessage());
+                }
+            }
+        });
     }
 }

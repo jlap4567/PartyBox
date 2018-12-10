@@ -13,6 +13,9 @@ import com.partyboxAPI.PartyFactory;
 import java.util.Calendar;
 import java.util.Locale;
 
+/**
+ * Date picker dialog
+ */
 public class DatePickerfragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

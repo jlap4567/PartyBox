@@ -53,8 +53,9 @@ public class ShoppingCart extends BaseBO {
 
             for (Item item : itemToQuantityMap.keySet()) {
                 JSONObject keyValuePair = new JSONObject();
-                JSONObjectWrapper itemWrapper = item.toJSON();
-                keyValuePair.put(JSON_ITEM, itemWrapper.getObject());
+                keyValuePair.put("item", item.getSku());
+                //JSONObjectWrapper itemWrapper = item.toJSON();
+                //ueyValuePair.put(JSON_ITEM, itemWrapper.getObject());
                 keyValuePair.put(JSON_QUANTITY, itemToQuantityMap.get(item));
 
                 jsonArray.put(keyValuePair);
@@ -62,8 +63,6 @@ public class ShoppingCart extends BaseBO {
 
             jsonObjectWrapper = new JSONObjectWrapper(jsonArray);
         } catch (JSONException e) {
-            throw new SerializationException(getClass().getName(), e.getMessage());
-        } catch (PartyBoxException e) {
             throw new SerializationException(getClass().getName(), e.getMessage());
         }
 

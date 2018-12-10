@@ -105,12 +105,12 @@ public abstract class Store extends BaseBO {
     }
 
     /**
-     * Since the store maintains an open connection to the remote server, orders shall be placed via the store
-     * @param cart
+     * orders shall be placed via the store
+     * @param address
+     * @param port
      * @throws PartyBoxException
      */
-    public static void placeOrder(ShoppingCart cart) throws PartyBoxException {
-        // TODO: Implement
+    public static void placeOrder(String address, Integer port) throws PartyBoxException {
     }
 
     /**
