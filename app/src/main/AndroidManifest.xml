@@ -23,6 +23,7 @@
         <activity android:name=".CommitAndPayActivity"></activity>
         <activity android:name=".CheckoutActivity"></activity>
         <activity android:name=".FoodListActivity"></activity>
+        <activity android:name=".enterAddress"></activity>
 
     </application>
 
