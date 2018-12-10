@@ -44,4 +44,9 @@
     <string name="amex">AMERICAN EXPRESS</string>
     <string name="total_price">Total Price</string>
     <string name="PartyBox">Party Box</string>
+    <string name="streetAddress">Enter Street Address</string>
+    <string name="state">Enter Your State</string>
+    <string name="city">Enter Your City</string>
+    <string name="zipCode">Enter Your Zip Code</string>
+    <string name="aptNum">Apartment Number</string>
 </resources>

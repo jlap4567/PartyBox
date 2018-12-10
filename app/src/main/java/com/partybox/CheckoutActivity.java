@@ -36,7 +36,7 @@ public class CheckoutActivity extends BaseActivity {
         enterAddressButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // nothing for now
+                switchToActivity(v, enterAddress.class, Direction.LEFT);
             }
         });
 

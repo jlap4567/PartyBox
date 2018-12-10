@@ -3,4 +3,133 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_blue"
+        android:gravity="top"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="@string/streetAddress"
+            android:textSize="30sp"
+            android:layout_gravity="center_horizontal"/>
+
+        <EditText
+            android:id="@+id/s_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="center_horizontal"
+            android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="@string/aptNum"
+            android:textSize="30sp"
+            android:layout_gravity="center_horizontal"/>
+
+        <EditText
+            android:id="@+id/apt_num"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="center_horizontal"
+            android:inputType="number"
+            android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="@string/state"
+            android:textSize="30sp"
+            android:layout_gravity="center_horizontal"/>
+
+        <EditText
+            android:id="@+id/state"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="center_horizontal"
+            android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="@string/city"
+            android:textSize="30sp"
+            android:layout_gravity="center_horizontal"/>
+
+        <EditText
+            android:id="@+id/city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="center_horizontal"
+            android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="@string/zipCode"
+            android:textSize="30sp"
+            android:layout_gravity="center_horizontal"/>
+
+        <EditText
+            android:id="@+id/zipCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="center_horizontal"
+            android:inputType="number"
+            android:textStyle="italic" />
+
+        <!-- Linear Layout for buttons-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="157dp"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+
+            <!-- Back button-->
+            <Button
+                android:id="@+id/back"
+                android:layout_width="71dp"
+                android:layout_height="56dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/roundedbutton"
+                android:backgroundTint="@color/red"
+                android:text="@string/back"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:typeface="sans" />
+
+            <!-- Next button-->
+            <Button
+                android:id="@+id/next"
+                android:layout_width="71dp"
+                android:layout_height="56dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="225dp"
+                android:background="@drawable/roundedbutton"
+                android:backgroundTint="@color/blue"
+                android:text="@string/next"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:typeface="sans" />
+
+        </LinearLayout>
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>
