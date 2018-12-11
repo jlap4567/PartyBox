@@ -37,11 +37,6 @@ public class OrderInfo extends BaseBO {
         }
 
         // hard code address/name for now until Jacob is done with address screen
-        firstName = "John";
-        lastName = "Johnson";
-        address = "123 First Street";
-        city = "Camden";
-        zip = "12345";
     }
 
     @Override

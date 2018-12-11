@@ -38,7 +38,7 @@ public class CommitAndPayActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 PaymentInfo paymentInfo = fillOutPaymentInfo();
-                if (paymentInfo == null) {
+                if (paymentInfo == null || getFirstLastName(paymentInfo.getCardName()) == null) {
                     showAlertDialog("Invalid Payment", "Please enter valid card information");
                 } else {
                     Party currentPartry = PartyFactory.getNewOrCurrentParty();
@@ -47,6 +47,9 @@ public class CommitAndPayActivity extends BaseActivity {
                     }
 
                     currentPartry.getOrderInfo().setPaymentInfo(paymentInfo);
+                    String[] firstLastName = getFirstLastName(paymentInfo.getCardName());
+                    currentPartry.getOrderInfo().setFirstName(firstLastName[0]);
+                    currentPartry.getOrderInfo().setLastName(firstLastName[1]);
                     switchToActivity(v, CheckoutActivity.class, Direction.RIGHT);
                 }
             }
@@ -88,5 +91,23 @@ public class CommitAndPayActivity extends BaseActivity {
         }
 
         return null;
+    }
+
+    private String[] getFirstLastName(String cardName) {
+        if (cardName == null) {
+            return null;
+        }
+
+        String[] tokens = cardName.split(" ");
+        if (tokens.length < 2) {
+            return null;
+        } else if (tokens.length == 2) {
+            return tokens;
+        } else {
+            String[] arr = new String[2];
+            arr[0] = tokens[0];
+            arr[1] = tokens[2];
+            return arr;
+        }
     }
 }
