@@ -8,6 +8,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.partybox.adapters.ShoppingCartItemAdapter;
+import com.partyboxAPI.MessageThread;
 import com.partyboxAPI.OrderInfo;
 import com.partyboxAPI.Party;
 import com.partyboxAPI.PartyFactory;
@@ -76,11 +77,16 @@ public class CheckoutActivity extends BaseActivity {
         orderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Thread thread = new Thread(new MessageThread());
+                thread.start();
+                switchToActivity(v, MainActivity.class, Direction.LEFT);
+                /*
                 try {
                     Log.d("xxxxxxxxx", party.getOrderInfo().toJSON().toString());
                 } catch (PartyBoxException e) {
                     Log.d("xxxxxxxxx", "FAILED: " + e.getMessage());
                 }
+                */
             }
         });
     }
