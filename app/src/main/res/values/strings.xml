@@ -49,4 +49,6 @@
     <string name="city">Enter Your City</string>
     <string name="zipCode">Enter Your Zip Code</string>
     <string name="aptNum">Apartment Number</string>
+    <string name="order_complete">Thank you for your order!</string>
+    <string name="home">Home</string>
 </resources>

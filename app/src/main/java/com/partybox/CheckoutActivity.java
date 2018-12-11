@@ -88,7 +88,7 @@ public class CheckoutActivity extends BaseActivity {
                 }
                 Thread thread = new Thread(new MessageThread());
                 thread.start();
-                switchToActivity(v, MainActivity.class, Direction.LEFT);
+                switchToActivity(v, OrderCompleteActivity.class, Direction.LEFT);
                 /*
                 try {
                     Log.d("xxxxxxxxx", party.getOrderInfo().toJSON().toString());
