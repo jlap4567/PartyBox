@@ -70,6 +70,11 @@ public class CheckoutActivity extends BaseActivity {
             }
 
             cartTotalDisplay.setText(String.format(Locale.ENGLISH, "%.2f", orderInfo.getCart().getTotalPrice()));
+
+            if (orderInfo.getAddress() != null) {
+                TextView addressView = findViewById(R.id.address_summary);
+                addressView.setText(orderInfo.getAddress() + " \n" + orderInfo.getCity() + " " + orderInfo.getZip());
+            }
         }
 
         //TODO show dialog if order info is not complete
