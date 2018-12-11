@@ -1,6 +1,7 @@
 package com.partyboxAPI;
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 
 import com.partyboxAPI.exceptions.PartyBoxException;
 
@@ -21,7 +22,7 @@ public class MessageThread implements Runnable {
         Socket socket;
         OutputStreamWriter writer;
         JSONObject object;
-        String serverIP = "10.0.0.121";
+        String serverIP = "73.10.137.124";
         int port = 9000;
 
         try {
@@ -33,8 +34,10 @@ public class MessageThread implements Runnable {
             socket.close();
         } catch (IOException e) {
             e.printStackTrace();
+            Log.e("xxxxx", e.getMessage());
         } catch (PartyBoxException e) {
             e.printStackTrace();
+            Log.e("xxxxx", e.getMessage());
         }
 
     }
