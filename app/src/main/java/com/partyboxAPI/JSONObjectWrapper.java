@@ -13,7 +13,7 @@ import org.json.JSONObject;
  */
 public class JSONObjectWrapper {
     private JSONArray array = null;
-    private transient JSONObject object = null;
+    private JSONObject object = null;
 
     protected JSONObjectWrapper(JSONArray array) {
         this.array = array;
