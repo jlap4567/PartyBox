@@ -82,6 +82,10 @@ public class CheckoutActivity extends BaseActivity {
         orderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (party.getOrderInfo() == null || party.getOrderInfo().getPaymentInfo() == null || party.getOrderInfo().getFirstName() == null) {
+                    showAlertDialog("Missing Payment Info or Address", "Missing Payment Info or Address");
+                    return;
+                }
                 Thread thread = new Thread(new MessageThread());
                 thread.start();
                 switchToActivity(v, MainActivity.class, Direction.LEFT);
